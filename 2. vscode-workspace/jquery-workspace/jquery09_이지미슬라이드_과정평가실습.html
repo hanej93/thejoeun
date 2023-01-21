@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지슬라이드 과정평가</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+        h1{
+            text-align: center;
+        }
+        #container {
+            width: calc(400px*3);
+            border: 1px solid gray;
+            position: relative;
+            margin: 150px auto;
+            padding: 30px;
+        }
+
+        #imgFrame {
+            width: calc(400px*3);
+            height: 300px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #imgFrame>ul{
+            width: calc(400px*5);
+            margin-left: -400px;
+        }
+        #imgFrame>ul::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        #imgFrame li {
+            float: left;
+        }
+
+        img {
+            width: 400px;
+            height: 300px;
+        }
+
+        #moveText{
+            font-size: 1.4rem;
+        }
+
+        img[src*=btn] {
+            margin-top: 15px;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $("img[src*=btn]").last().click(function(){
+                $("div#imgFrame>ul").animate({"margin-left":"-800px"},500,function(){
+                    $(this).css("margin-left","-400px");
+                    $(this).append($(this).children().eq(0));
+                });
+            });
+            $("img[src*=btn]").first().click(function(){
+                $("div#imgFrame>ul").animate({"margin-left":"0px"},500,function(){
+                    $("div#imgFrame>ul").prepend($("div#imgFrame>ul").children().eq(4));
+                    $("div#imgFrame>ul").css("margin-left","-400px");
+                });
+            });
+        });
+    </script>
+    
+</head>
+
+<body>
+    <div>
+        <h1>롤링 슬라이드 배너</h1>
+        <hr>
+
+        <div id="container">
+            <div id="imgFrame">
+                <ul>
+                    <li><img src="../images/images/pic_1.jpg" alt=""></li>
+                    <li><img src="../images/images/pic_2.jpg" alt=""></li>
+                    <li><img src="../images/images/pic_3.jpg" alt=""></li>
+                    <li><img src="../images/images/pic_4.jpg" alt=""></li>
+                    <li><img src="../images/images/pic_5.jpg" alt=""></li>
+                </ul>
+            </div>
+            <img src="../images/images/prev_btn.png" alt="">
+            <span id="moveText">이동하기</span>
+            <img src="../images/images/next_btn.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

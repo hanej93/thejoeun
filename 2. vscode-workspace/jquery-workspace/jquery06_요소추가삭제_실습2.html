@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동차견적</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <style>
+        #container{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            width : 100%
+        }
+        th, td{
+            border: 1px solid black;
+        }
+        th{
+            background-color: gray;
+        }
+
+        tr:last-child{
+            font-weight: bold;
+            font-size: 110%;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("input[type=checkbox]").click(function(){
+                var checkBox = $(this);
+
+                var result = $("#result");
+                var optionPrice = checkBox.parent().prev();
+
+                if(checkBox.prop("checked")){
+                    result.text(Number(result.text()) + Number(optionPrice.text()));
+                } else {
+                    result.text(Number(result.text()) - Number(optionPrice.text()));
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+        <h1>자동차 견적</h1>
+        <img src="../images/images/car4.jpg" alt="">
+        <table>
+            <tr>
+                <th>옵션</th>
+                <th>추 가 옵 션</th>
+                <th>선택여부</th>
+            </tr>
+            <tr>
+                <td>인조가죽시트</td>
+                <td>250000</td>
+                <td><input type="checkbox" name="seat" id=""></td>
+            </tr>
+            <tr>
+                <td>네비게이션</td>
+                <td>250000</td>
+                <td><input type="checkbox" name="nav" id=""></td>
+            </tr>
+            <tr>
+                <td>썬루프</td>
+                <td>440000</td>
+                <td><input type="checkbox" name="loop" id=""></td>
+            </tr>
+            <tr>
+                <td>차량금액(옵션포함)</td>
+                <td colspan="2" id="result">20000000</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

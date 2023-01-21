@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flaot 실습-2</title>
+
+    <style>
+        .floating{
+            float:left;
+        }
+        .box_size1{
+            margin: 5px;
+            width: 290px;
+            height: 290px;
+            line-height: 290px;
+        }
+        .box_size2{
+            margin: 5px;
+            width: 590px;
+            height: 140px;
+            line-height: 140px;
+        }
+        .box_size3{
+            margin: 5px;
+            width: 190px;
+            height: 140px;
+            line-height: 140px;
+        }
+        .box_size4{
+            margin: 5px;
+            width: 590px;
+            height: 290px;
+            line-height: 290px;
+        }
+        .bg_color1{
+            background-color: deepskyblue;
+        }
+        .bg_color2{
+            background-color: steelblue;
+        }
+        section::after{
+            content: "";
+            display: block;
+            clear: left;
+        }
+        section{
+            color: white;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+        <section class="floating">
+            <div class="floating box_size1 bg_color1">Home</div>
+            <div class="floating box_size1 bg_color1">About</div>
+            <div style="clear: left;"></div>
+            <div class="floating box_size2 bg_color1">kabobs</div>
+            <div style="clear: left;"></div>
+            <div class="floating box_size3 bg_color2">Shishkabobs</div>
+            <div class="floating box_size3 bg_color2">BBQ kabobs</div>
+            <div class="floating box_size3 bg_color2">Summer kabobs</div>
+        </section>
+        <section class="floating">
+            <div class="floating box_size2 bg_color1">Widgets</div>
+            <div style="clear: left;"></div>
+            <div class="floating box_size3 bg_color2">Big Widgets</div>
+            <div class="floating box_size3 bg_color2">Bigger Widgets</div>
+            <div class="floating box_size3 bg_color2">Huge Widgets</div>
+            <div style="clear: left;"></div>
+            <div class="floating box_size4 bg_color1">Contact</div>
+        </section>
+        
+    </section>
+    
+</body>
+</html>

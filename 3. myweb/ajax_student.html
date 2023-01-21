@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax_student.html</title>
+    <script>
+        window.addEventListener("DOMContentLoaded",function(){
+            document.querySelector("button").onclick = function(){
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+
+                    if(xhr.readyState == 4){
+
+                        if(xhr.status == 200){
+                            var resp = xhr.responseText;
+                            var student = JSON.parse(resp);
+                            console.log(student[0].myClass01);
+                            console.log(student[1].myClass02);
+                            console.log(student[2].myClass03);
+                            
+
+                            var d = document.createElement("div");
+                            var str = "";
+
+                            for(const s0 of student[0]){
+                                str += "<span>" + s0.name + ", " + s0.kor + ", " + s0.eng + ", " + s0.math + "</span><br>"
+                            }
+                            d.innerHTML = str;
+                            document.querySelector("body").append(d);
+                        } else {}
+                    }
+                }
+                xhr.open("get","http://localhost:8080/myweb/student.json",true);
+                xhr.send();
+                
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>oo학교 1학년 성적</h1>
+    <button>각반 성적 확인버튼</button>
+</body>
+</html>
+
+<!-- //숙제
+//json으로
+//학생 한명이 갖는 정보 : name, kor, eng, math
+//[{[{},{},{}]},{[{},{},{}]},{[{},{},{}]}]
+//{myClass01 : [학생3명]}
+//myClass02 : [학생3명]
+//myClass03 : [학생3명]
+//
+//버튼 클릭 시
+//각반의 총점과 평균을 구해서 출력
+//평균이 가장 높은 반은 어떤반인지 출력 -->

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>간단한 계산기</title>
+    <style>
+        p {
+            font-weight: bold;
+            border-style: solid;
+            border-radius: 5px;
+            border-color: wheat;
+            padding: 5px;
+        }
+
+
+
+        form {
+            margin-bottom: 100px;
+        }
+
+        p[id*='result'] {
+            text-align: center;
+            margin: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            background-color: lemonchiffon;
+        }
+
+        td {
+            padding: 0px;
+            text-align: center;
+        }
+
+        table input {
+            border: none;
+            background-color: lemonchiffon;
+        }
+
+        table button {
+            background-color: lemonchiffon;
+            font-weight: bold;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            height: 100%;
+        }
+
+        table button:hover {
+            background-color: royalblue;
+            color: white;
+        }
+
+        td[colspan="4"] {
+            padding: 8px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        1. 두 수를 입력받아 버튼을 클릭 시, 해당되는 연산을 수행 후<br>
+        p 태그 안쪽에 결과값을 출력하는 코드 작성
+    </p>
+    <form name="myCal">
+        <input type="text" name="number1" placeholder="숫자1 입력">
+        <input type="text" name="number2" placeholder="숫자2 입력"><br>
+        <button type="button" onclick="oper1('+')">더하기</button>
+        <button type="button" onclick="oper1('-')">빼기</button>
+        <button type="button" onclick="oper1('*')">곱하기</button>
+        <button type="button" onclick="oper1('/')">나누기</button>
+        <p id="result">결과창1</p>
+    </form>
+
+    <p>
+        2. 두 수를 입력받아 버튼을 클릭 시, 해당되는 연산을 수행 후<br>
+        p 태그 안쪽에 결과값을 출력하는 코드 작성
+    </p>
+    <form name="myCal2">
+        <input type="text" name="number1" placeholder="숫자1 입력">
+        <input type="text" name="number2" placeholder="숫자2 입력">
+        <fieldset>
+            <legend>연산</legend>
+            <label><input type="radio" name="op" value="+">+</label>
+            <label><input type="radio" name="op" value="-">-</label>
+            <label><input type="radio" name="op" value="*">*</label>
+            <label><input type="radio" name="op" value="/">/</label>
+        </fieldset>
+        <button type="button" onclick="btResult()">확인</button>
+        <p id="result2">결과창2</p>
+    </form>
+    <p>
+        3. 두 수를 입력받아 버튼을 클릭 시 라디오 버튼으로 선택된 연산을 수행 후<br>
+        p 태그 안쪽에 결과값을 출력하는 코드 작성
+    </p>
+    <form name="myCal3">
+        <input type="text" name="number1" placeholder="숫자1 입력">
+        <select name="op">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" name="number2" placeholder="숫자2 입력">
+        <button type="button" onclick="btSelect()">확인</button>
+        <p id="result3">결과창3</p>
+    </form>
+
+    <p>
+        4. 버튼으로 입력된 식을 계산하여 p태그에 출력
+    </p>
+    <form name="myCal4">
+        <table border="2px">
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        <input type="text" name="sic" placeholder="식을 입력">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <span id="result4" style="font-weight: bold;">
+                            <div style="color: gray;">result</div>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="btNum(1)">1</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(2)">2</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(3)">3</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum('+')">+</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="btNum(4)">4</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(5)">5</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(6)">6</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum('-')">-</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="btNum(7)">7</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(8)">8</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum(9)">9</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum('*')">*</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="btNum(0)">0</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btReset()">C</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btDel()">←</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="btNum('/')">/</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <button type="button" onclick="btCalculator()">확인</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </form>
+
+    <script>
+        let result4 = document.getElementById("result4");
+
+        function btNum(num) {
+            document.myCal4.sic.value += num;
+        }
+
+        function btCalculator() {
+            let formular = document.myCal4.sic.value;
+            let value = 0;
+            let numStack = [];
+            let opStack = [];
+            let opPopValue;
+
+            // 후위표기식으로 변경
+            for (const char of formular) {
+                // 숫자 판단
+                if (!isNaN(char)) {
+                    value = value * 10 + Number(char);
+                } else {
+                    numStack.push(value);
+                    opPopValue = opStack.pop();
+                    if (opPopValue == undefined) {
+                        opStack.push(char);
+                    } else {
+                        if (operPriority(char, opPopValue)) {
+                            opStack.push(opPopValue);
+                            opStack.push(char);
+                        } else {
+                            while (opPopValue != undefined) {
+                                numStack.push(opPopValue);
+                                opPopValue = opStack.pop();
+                            }
+                            opStack.push(char);
+                        }
+                    }
+                    value = 0;
+                }
+            }
+
+            numStack.push(value);
+            opPopValue = opStack.pop();
+            while (opPopValue != undefined) {
+                numStack.push(opPopValue);
+                opPopValue = opStack.pop();
+            }
+
+            console.log(numStack.join(' '));
+
+            let calArr = [];
+            for (const value of numStack) {
+                if (!isNaN(value)) {
+                    calArr.push(value);
+                } else {
+                    let num1 = calArr.pop();
+                    let num2 = calArr.pop();
+                    if (value == "+") {
+                        calArr.push(num2 + num1);
+                    } else if (value == "-") {
+                        calArr.push(num2 - num1);
+                    } else if (value == "*") {
+                        calArr.push(num2 * num1);
+                    } else if (value == "/") {
+                        calArr.push(num2 / num1);
+                    }
+                }
+                calArr.push(calArr.pop());
+            }
+            result4.innerHTML = calArr.pop();
+        }
+
+        function operPriority(op1, op2) {
+            if (op1 == "*" || op1 == "/") {
+                if (op2 == "+" || op2 == "-") {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+        function btReset() {
+            document.myCal4.sic.value = "";
+            result4.innerHTML = "<div style='color: gray;'>result</div>";
+        }
+
+        function btDel() {
+            document.myCal4.sic.value = document.myCal4.sic.value.slice(0, -1);
+        }
+    </script>
+
+
+
+
+    <script>
+        function oper1(op) {
+            let cal = document.myCal;
+            let result1;
+            let num1 = Number(cal.number1.value);
+            let num2 = Number(cal.number2.value);
+            if (num1 == "") {
+                result.innerHTML = "숫자1을 입력바랍니다.";
+                return;
+            }
+            if (num2 == "") {
+                result.innerHTML = "숫자2를 입력바랍니다.";
+                return;
+            }
+
+            if (op == "+") {
+                result1 = num1 + num2;
+            } else if (op == "-") {
+                result1 = num1 - num2;
+            } else if (op == "*") {
+                result1 = num1 * num2;
+            } else if (op == "/") {
+                result1 = num1 / num2;
+            }
+            document.getElementById("result").innerHTML = result1;
+        }
+
+
+
+        function btResult() {
+            let cal2 = document.myCal2;
+            let num1 = Number(document.myCal2.number1.value);
+            let num2 = Number(document.myCal2.number2.value);
+
+            if (num1 == "") {
+                result2.innerHTML = "숫자1을 입력바랍니다.";
+                return;
+            }
+            if (num2 == "") {
+                result2.innerHTML = "숫자2를 입력바랍니다.";
+                return;
+            }
+
+            if (cal2.op.value == "") {
+                result2.innerHTML = "연산자를 선택바랍니다.";
+                return;
+            }
+
+            if (cal2.op.value == "+") {
+                result2.innerHTML = num1 + num2;
+            } else if (cal2.op.value == "-") {
+                result2.innerHTML = num1 - num2;
+            } else if (cal2.op.value == "*") {
+                result2.innerHTML = num1 * num2;
+            } else if (cal2.op.value == "/") {
+                result2.innerHTML = num1 / num2;
+            }
+
+        }
+
+        function btSelect() {
+
+            var cal3 = document.myCal3;
+            var num1 = Number(document.myCal3.number1.value);
+            var num2 = Number(document.myCal3.number2.value);
+
+            if (num1 == "") {
+                result3.innerHTML = "숫자1을 입력바랍니다.";
+                return;
+            }
+            if (num2 == "") {
+                result3.innerHTML = "숫자2를 입력바랍니다.";
+                return;
+            }
+
+            if (cal3.op.value == "+") {
+                result3.innerHTML = num1 + num2;
+            } else if (cal3.op.value == "-") {
+                result3.innerHTML = num1 - num2;
+            } else if (cal3.op.value == "*") {
+                result3.innerHTML = num1 * num2;
+            } else if (cal3.op.value == "/") {
+                result3.innerHTML = num1 / num2;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

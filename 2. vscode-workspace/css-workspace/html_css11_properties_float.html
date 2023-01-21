@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float</title>
+    <style>
+        div{
+            border: 1px solid red;
+        }
+        div>img{
+            width: 200px;
+            height: 200px;
+        }
+        .floating{
+            float: left;
+        }
+        div.under_box{
+            background-color: black;
+            width: 100px;
+            height: 100px;
+        }
+        .clear{
+            clear: both;
+        }
+        
+        /* 박스들을 가로 50, 세로 50으로 만들자 */
+        .box{
+            width: 50px;
+            height: 50px;
+        }
+        .ex01{
+            background: red;
+        }
+        .ex02{
+            background: orange;
+        }
+        .ex03{
+            background: yellow;
+        }
+        .ex04{
+            background: green;
+        }
+        .ex05{
+            background: blue;
+        }
+        section{
+            border: 3px solid black;
+        }
+        section::after{
+            content: "";
+            display: block;
+            clear: both;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>플로팅</h1>
+
+    <div>
+        <img class="floating" src="images/images/hi.png" alt="하이">
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이
+        <div class="clear"></div> 
+    </div>
+    <div class="under_box"></div>
+  
+    <hr>
+    <section>
+        <div class="box ex01 floating"></div>
+        <div class="box ex02 floating"></div>
+        <div class="box ex03 floating"></div>
+        <div class="box ex04 floating"></div>
+        <div class="box ex05 floating"></div>
+    </section>
+    <div class="under_box"></div>
+  
+</body>
+</html>

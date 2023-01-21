@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax_json.html</title>
+    <script>
+        window.addEventListener("DOMContentLoaded",function(){
+            document.querySelector("button").onclick = function(){
+                var xhr = new XMLHttpRequest();
+
+
+                // 상태가 변할때마다 실행
+                xhr.onreadystatechange = function(){
+                    // xhr.readyState 0, 1, 2, 3, 4 단계가 있음
+                    // 4: 다운로드가 완료되었을 때
+                    // 0: 보내기 전
+                    // 1: 보낸 후
+                    // 2 : 헤더만 받을 때
+                    // 3 : 로딩중
+
+                    // 다운로드되었고 정상적인 상태라면!
+                    if(xhr.readyState == 4){
+                        if(xhr.status == 200){
+                            // json을 가져와 처리하자!
+                            var resp = xhr.responseText;
+                            // console.dir(resp);
+                            // json포맷으로 넘어온 문자열을 자바스크립트 객체로 변환한다.
+                            var people = JSON.parse(resp);
+                            console.dir(people);
+
+                            var d = document.createElement("div");
+                            var str = "";
+                            for(const p of people){
+                                str += "<span>" + p.name + ", " + p.age + ", [";
+                                for(const h of p.취미){
+                                    str += h + " ";
+                                }
+                                str += "]";
+                                str += "</span><br>"
+                            }
+                            d.innerHTML = str;
+                            document.querySelector("body").append(d);
+                        } else {
+                            console.log("정상적이지 않음!");
+                        }
+                    }
+                }
+                // 요청정보 셋팅
+                xhr.open("get","http://localhost:8080/myweb/data.json",true);
+                // 요청보내기
+                xhr.send();
+                
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>json 가져오기</h1>
+    <button>데이터 가져오기</button>
+</body>
+</html>

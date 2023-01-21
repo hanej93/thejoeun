@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax fetch</title>
+    <script>
+        // fetch(url, {options})
+        // .then() : 성공시
+        // .catch() : 실패시
+        window.addEventListener("DOMContentLoaded",function(){
+            document.querySelector("button").onclick = function(){
+                fetch("http://localhost:8080/myw/data.json",{
+                    method:"get"
+                })
+                .then((response) => {   // promise라는 객체로 받음
+                    // 받은 데이터를 json으로 parse
+                    return response.json();
+
+                    // 받은 데이터를 텍스트로
+                    // return response.text();
+                })
+                .then(function(result){
+                    // 실행할 로직을 작성
+                    console.log(result);
+                })
+                .catch((error) => console.log("error", error)); 
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>fatch를 이용한 ajax</h1>
+    <button>데이터 가져오기</button>
+</body>
+</html>

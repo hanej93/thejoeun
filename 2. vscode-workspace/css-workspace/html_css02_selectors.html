@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS-Selectors</title>
+    <style>
+        /* 태그로 선택하는 방식 */
+        p{
+            background-color: #ffff00;
+        }
+
+        /* 아이디로 선택하는 방식 */
+        #id_selector{
+            background-color: #17f08b;
+        }
+
+        /* 클래스로 선택하는 방식 */
+        .class_selector{
+            background-color: #c71878;
+        }
+
+        /* 전체를 선택하는 방식 */
+        *{
+            margin : 0; padding: 0;
+        }
+        
+        /* 자식 선택자 */
+        ol>li{
+            color:blueviolet;
+        }
+        /* 자손 선택자 */
+        div ol{
+            border: 1px solid black;
+        }
+        /* 결합 선택자 */
+        ol.bg_orange{
+            background-color: chartreuse;
+        }
+        /* 속성 선택자 */
+        a[href="https://www.naver.com"]{
+            background-color: green;
+        }
+        [href*="daum"]{
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>CSS 선택자</h1>
+    css가 어떤 요소(element)를 선택할 것인가를 판단하기 위한 방식<br>
+    
+    <p>
+        태그로 선택하는 방식<br>
+        형식 -> 태그명{css속성:값}
+    </p>
+
+    <div id="id_selector">
+        id로 선택하는 방법<br>
+        형식 -> #아이디명{css속성:값}
+    </div>
+    <br>
+    <div class="class_selector">
+        클래스로 선택하는 방법<br>
+        형식 -> .클래스명{css속성:값}
+    </div>
+    <br>
+    <div>
+        전체를 선택하는 방법<br>
+        형식 -> *{css속성:값}
+    </div>
+
+    <hr>
+
+    <h3>관계에 의한 선택자</h3>
+    <div>
+        <ul class="bg_orange">
+            <li>1번</li>
+            <li>2번</li>
+            <li>3번
+                <ol>
+                    <li>3-1번</li>
+                    <li>3-2번</li>
+                    <li>3-3번</li>
+                </ol>
+            </li>
+        </ul>
+        <br><br>
+        <ol class="bg_orange">
+            <li>ol자식 01</li>
+            <li>ol자식 02</li>
+            <li>ol자식 03</li>
+        </ol>
+    </div>
+    <hr>
+    <a href="https://www.naver.com">네이버</a>
+    <a href="https://www.daum.net">다음</a>
+
+</body>
+</html>

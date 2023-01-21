@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            background-color: red;
+            animation: my_ani 500ms infinite;
+        }
+        @keyframes my_ani {
+            25%{
+                left:0px;
+                top:500px;
+                background-color: blueviolet;
+                transform: rotate(360deg);
+                }
+            50%{
+                top:500px;
+                left:500px;
+                background-color: dodgerblue;
+                transform: rotate(720deg);
+                
+            }
+            75%{
+                top:0px;
+                left:500px;
+                background-color: magenta;
+                transform: rotate(1080deg);
+                
+            }
+            100%{
+                top:0px;
+                left:0px;
+                background-color: orangered;
+                transform: rotate(1440deg);
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    
+</body>
+</html>

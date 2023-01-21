@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>배열</title>
+</head>
+<body>
+    <h1>배열</h1>
+    <dl>
+        <dt>배열을 생성</dt>
+        <dd>
+            var myArray = [데이터1, 데이터2, 데이터3..];<br>
+            var myArray = new myArray(데이터1, 데이터2, 데이터3...);<br>
+            var myArray = [];<br>
+            var myArray = new Array();
+        </dd>
+        <dt>배열의 사용</dt>
+        <dd>
+            변수명[index] = 넣을 값<br>
+            myArray[0] = "값1";<br>
+            myArray[1] = 100;
+        </dd>
+        <dt>배열의 기본 속성</dt>
+        <dd>
+            길이: 변수명.length <br>
+        </dd>
+        <dt>배열의 특징</dt>
+        <dd>
+            <ul>
+                <li>데이터 타입이 서로 달라도 된다.</li>
+                <li>배열의 길이가 가변이 된다.</li>
+                <li>배열자체에 기본 메서드도 있다.</li>
+            </ul>
+        </dd>
+    </dl>
+    <script>
+        var myFoods = ["순댓국","소고기","닭가슴살"];
+        var myHobbies = new Array("축구","농구","게임");
+        console.log(myFoods);
+        console.log(myHobbies);
+        console.log("myFoods의 길이: " +myFoods.length);
+        // 배열에 추가할 수 있음
+        myFoods[3] = "피자";
+        console.log(myFoods);
+        
+        myHobbies[5] = "독서";
+        console.log(myHobbies);
+
+        // 다른 타입의 데이터도 넣을 수 있다.
+        myHobbies[3] = 10;
+        myHobbies[4] = false;
+
+        // 인덱스대신 키로 넣을 수도 있음
+        var myArray = [];
+        myArray["name"] = "짱구";
+        myArray["age"] = 10;
+        console.log(myArray);
+
+        // 메서드를 활용
+        myFoods.push("초밥"); // 맨 뒤에 "초밥"을 추가
+        console.log(myFoods);
+        var f = myFoods.pop(); // 맨 뒤에 값을 꺼내면서 반환
+        console.log("f: "+ f);
+        console.log(myFoods);
+
+        // 변수명.splice(시작index, 지울 갯수, 추가할 데이터1, 추가할 데이터2..);
+        myFoods.splice(2, 1, "햄버거", "콜라");
+        console.log(myFoods);
+
+        // 오름차순 정렬
+        myFoods.sort();
+        console.log(myFoods);
+
+        // 역순 reverse(응용하여 내림차순 가능)
+        myFoods.sort().reverse();
+        console.log(myFoods);
+
+        // 배열의 일부분을 반환 시작index, 끝index(끝 index 미포함)
+        var food_slice = myFoods.slice(2,4); //2번부터 4번까지 반환
+        console.log(food_slice);
+
+        // 0 ~ 20까지 수 중에서 2의 배수를 배열에 담고
+        // 그 중 3의 배수인 애들을 제거하여
+        // 내림차순으로 출력해보세요.
+        var myNumArray =[];
+        for(let i = 0 ; i < 21 ; i++){
+            if(i%2 == 0){
+                myNumArray.push(i);
+                // if(i%3 == 0){
+                //     myNumArray.pop();
+                // }
+            }
+        }
+        console.log(myNumArray);
+        for(let i = myNumArray.length-1 ; i >= 0; i--){
+            if(myNumArray[i] % 3 == 0){
+                myNumArray.splice(i,1);
+            }
+        }
+        console.log(myNumArray);
+        myNumArray.sort(function(a,b){
+            return a-b;
+            // or b-a면 바로 내림차순 가능
+        }).reverse();
+
+        console.log(myNumArray);
+        
+    </script>
+</body>
+</html>

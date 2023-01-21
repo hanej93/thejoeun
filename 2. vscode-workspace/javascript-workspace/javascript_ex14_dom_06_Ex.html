@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script>
+        // 이벤트 10개 사용해보기
+        window.addEventListener("DOMContentLoaded", function () {
+            let ex01 = document.getElementById("ex01");
+
+            ex01.addEventListener('keyup', function () {
+                ex01.style.backgroundColor = "red";
+            });
+
+            ex01.addEventListener('keydown', function () {
+                ex01.style.backgroundColor = "blue";
+            });
+            
+            ex01.addEventListener('keypress', function () {
+                ex01.style.backgroundColor = "yellow";
+            });
+
+            ex01.addEventListener('mouseover', function () {
+                ex01.style.width = "300px";
+            });
+
+            ex01.addEventListener('mouseout', function () {
+                ex01.style.width = "150px";
+            });
+
+            ex01.addEventListener('click', function () {
+                ex01.style.backgroundColor = "red";
+            })
+
+            ex01.addEventListener('focus', function () {
+                ex01.value += "focus";
+            })
+
+            ex01.addEventListener('blur', function () {
+                ex01.value += "blur";
+            })
+            ex01.addEventListener('wheel', function () {
+                ex01.value = "";
+            })
+            
+        });
+        
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <input type="text" name="" id="ex01">
+    </form>
+</body>
+
+</html>

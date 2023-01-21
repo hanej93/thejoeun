@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>id, class를 이용한 실습</title>
+    <style>
+        .red_font {
+            color: red;
+        }
+
+        .bg_green {
+            background-color: green;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="chFont()">음식 종류의 글자를 빨강색으로 변경</button>
+    <button onclick="chBg()">헬스의 배경색은 초록색으로 변경</button>
+    <button onclick="show_hide()">초밥을 안 보이게 / 보이게 하기</button>
+    <ul>
+        <li>음식
+            <ol>
+                <li>삽겹살</li>
+                <li>산낙지</li>
+                <li>초밥</li>
+                <li>순댓국</li>
+                <li>족발</li>
+            </ol>
+        </li>
+        <li>취미
+            <ol>
+                <li>롤</li>
+                <li>배그</li>
+                <li>음주가무</li>
+                <li>헬스</li>
+            </ol>
+        </li>
+    </ul>
+
+    <script>
+        function chFont() {
+            let foods = document.querySelector("ol").children;
+            console.log(foods);
+            for (let i = 0; i < foods.length; i++) {
+                foods[i].classList.add("red_font");
+            }
+        }
+
+        function chBg() {
+            let health = document.querySelectorAll("ol")[1].lastElementChild;
+            health.classList.add("bg_green");
+        }
+
+        // function show_hide() {
+        //     let sushi = document.querySelector("ol").firstElementChild.nextElementSibling.nextElementSibling;
+        //     if (!sushi.classList.contains("hidden")) {
+        //         sushi.classList.add("hidden");
+        //     } else {
+        //         sushi.classList.remove("hidden");
+        //     }
+        // }
+        function show_hide() {
+            let sushi = document.querySelector("ol").firstElementChild.nextElementSibling.nextElementSibling;
+            sushi.classList.toggle("hidden");
+        }
+
+        function name(params) {
+            
+        }
+    </script>
+</body>
+
+</html>

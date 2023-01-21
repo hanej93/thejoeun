@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>연산자</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        td:first-child {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>연산자</h1>
+    <script>
+        var a = 10;
+        var b = 20;
+        document.write("10 == 20 : ", a == b, "<br>");
+
+        var c = "10";
+        // == 값을 비교(타입을 비교하지 않음)
+        document.write('10 == "10" : ', a == c, "<br>");
+
+        // === 값과 타입 모두 같은가
+        document.write('10 === "10" : ', a === c, "<br>");
+
+        document.write(" typeof a : ", typeof a, "<br>");
+        document.write(" typeof c : ", typeof c, "<br>");
+    </script>
+    <hr>
+    <table>
+        <tr>
+            <td>typeof</td>
+            <td>타입이 뭔지</td>
+        </tr>
+
+        <tr>
+            <td>===</td>
+            <td>같냐?</td>
+        </tr>
+        <tr>
+            <td>!==</td>
+            <td>다르냐?</td>
+        </tr>
+
+        <tr>
+            <td>+</td>
+            <td>더하기</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>빼기</td>
+        </tr>
+        <tr>
+            <td>*</td>
+            <td>곱하기</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>나누기</td>
+        </tr>
+        <tr>
+            <td>%</td>
+            <td>나머지</td>
+        </tr>
+
+        <tr>
+            <td>=</td>
+            <td>대입</td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>더해서 대입</td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>빼서 대입</td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>곱해서 대입</td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>나눠서 대입</td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>나눠 나머지를 대입</td>
+        </tr>
+
+        <tr>
+            <td> a < b </td> <td>a가 b보다 작냐</td>
+        </tr>
+        <tr>
+            <td> a > b </td>
+            <td>a가 b보다 크냐</td>
+        </tr>
+        <tr>
+            <td> a <= b </td> <td>a가 b보다 작거나 같냐</td>
+        </tr>
+        <tr>
+            <td> a >= b </td>
+            <td>a가 b보다 크거나 같냐</td>
+        </tr>
+
+        <tr>
+            <td>&&</td>
+            <td>and연산</td>
+        </tr>
+        <tr>
+            <td>||</td>
+            <td>or연산</td>
+        </tr>
+
+        <tr>
+            <td>==</td>
+            <td>같냐</td>
+        </tr>
+        <tr>
+            <td>!=</td>
+            <td>다르냐</td>
+        </tr>
+
+        <tr>
+            <td>&</td>
+            <td>비트를 and연산</td>
+        </tr>
+        <tr>
+            <td>|</td>
+            <td>비트를 or연산</td>
+        </tr>
+        <tr>
+            <td> >> </td>
+            <td>비트를 오른쪽 쉬프트</td>
+        </tr>
+        <tr>
+            <td>
+                << </td> <td>비트를 왼쪽으로 쉬프트
+            </td>
+        </tr>
+        <tr>
+            <td>++</td>
+            <td>1씩 증가</td>
+        </tr>
+        <tr>
+            <td>--</td>
+            <td>1씩 감소</td>
+        </tr>
+        <tr>
+            <td>(조건식)? a : b</td>
+            <td>조건식이 참일 때 a, 거짓일 때 b</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

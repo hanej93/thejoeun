@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        p{
+            position: relative;
+            margin: 10px auto;
+            border: 1px solid black;
+            padding: 15px;
+            width: 400px;
+        }
+        .bg_yellow{
+            background-color: yellow;
+        }
+
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded",function(){
+
+            document.querySelector("button").addEventListener("click", function(){
+                
+                $.ajax({
+                    url: "http://localhost:8080/myw/myClass.json",
+                    dataType : "json",
+                    success : function(result){
+                        var button = document.querySelector("button");
+                        var classes = result;
+                        
+
+                        var maxTot = 0;
+                        var maxPtag = 0;
+                        var cnt = 0;
+                        for (let cla of classes) {
+                            var classPtag = document.createElement("p");
+                            var str = "&lt 반 정보 &gt<br>";
+                            var scoreArr = [];
+                            var totKor = 0;
+                            var totMath = 0;
+                            var totEng = 0;
+                            for(let stu of cla.myClass){
+                                str += "이름: " +stu.name + "<br>";
+                                str += "국어점수: " + stu.kor + "점 &nbsp&nbsp수학점수: " + stu.math  + "점 &nbsp&nbsp영어점수: " + stu.eng +"점<br>";
+                                totKor += stu.kor;
+                                totMath += stu.math;
+                                totEng += stu.eng;
+                            }
+                            str += "<br>&lt 점수 집계 &gt<br>";
+                            str += "총점: " + (totKor+totMath+totEng) +"점 &nbsp&nbsp 평균: " + ((totKor+totMath+totEng)/9).toFixed(1)+ "점<br>";
+                            str += "국어총점: " + totKor + "점 &nbsp&nbsp수학총점: " + totMath  + "점 &nbsp&nbsp영어총점: " + totEng +"점<br>";
+                            str += "국어평균: " + (totKor/3).toFixed(1) + "점 &nbsp&nbsp수학평균: " + (totMath/3).toFixed(1)  + "점 &nbsp&nbsp영어평균: " + (totEng/3).toFixed(1) +"점<br>";
+                            classPtag.innerHTML = str;
+                            button.parentElement.append(classPtag);
+                            if((totKor+totMath+totEng) >= maxTot){
+                                maxTot = (totKor+totMath+totEng);
+                                maxPtag = cnt;
+                            }
+                            cnt++;
+
+                        }
+                        document.querySelectorAll("p")[maxPtag].classList.add("bg_yellow");
+                        // 각 반의 총점과 평균
+                        // 평균이 가장 높은 반은??
+                    },
+                    error : function(e){
+                        console.log(e);
+                        alert("데이터가 불러와지지않음")
+                    }
+                });
+
+            }, {once:true});
+        });
+    </script>
+</head>
+<body>
+    <button>학생 정보 조회</button>
+</body>
+</html>

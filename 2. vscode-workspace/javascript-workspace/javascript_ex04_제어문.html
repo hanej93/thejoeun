@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>제어문</title>
+</head>
+
+<body>
+    <h1>제어문</h1>
+    <dl>
+        <dt>조건문</dt>
+        <dd>
+            <ul>
+                <li>if</li>
+                <li>if-else</li>
+                <li>if-ifelse-else</li>
+                <li>switch-case</li>
+            </ul>
+        </dd>
+        <td>반복문</td>
+        <dd>
+            <ul>
+                <li>while()</li>
+                <li>do-while()</li>
+                <li>for()</li>
+                <li>for...in</li>
+            </ul>
+        </dd>
+    </dl>
+    <script>
+        var num = 10;
+        //실행이 되는 코드
+        if (num) {
+            console.log("실행이 되는가?");
+        }
+        // 10번 반복
+        while (num) {
+            num--;
+            console.log("num: ", num);
+        }
+        for (let i = 0; i < 10; i++) {
+
+        }
+        //구구단
+        //while문을 이용해서 출력!
+        console.log("");
+        console.log("구구단(while문)");
+        var whileI = 2,
+            whileJ = 1;
+
+        while (whileI < 10) {
+            console.log(whileI + '단');
+            console.log("-------------------------")
+            whileJ = 1;
+            while (whileJ < 10) {
+                console.log(whileI + " x " + whileJ + " = " + whileI * whileJ);
+                whileJ++;
+            }
+            whileI++;
+            console.log("");
+            console.log("");
+        }
+
+        //for문을 이용해서 출력
+        console.log("");
+        console.log("구구단(for문)");
+        for (let i = 2; i < 10; i++) {
+            console.log(i + '단');
+            console.log("-------------------------")
+            for (let j = 1; j < 10; j++) {
+                console.log(i + " x " + j + " = " + i * j);
+            }
+            console.log("");
+            console.log("");
+        }
+    </script>
+</body>
+
+</html>

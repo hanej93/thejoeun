@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fetch 연습</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        table {
+            position: relative;
+            margin: 10px auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            width: 1100px;
+            
+        }
+
+        th,
+        tr,
+        td {
+            border: 1px solid rgb(199, 194, 194);
+            padding: 3px 10px;
+        }
+
+        th {
+            background-color: rgb(153, 0, 0);
+            /* background-color: rgb(255, 51, 34); */
+            color: white;
+        }
+        tr {
+            background-color: rgb(245, 245, 245);
+        }
+        span#korTitle{
+            color: rgb(87, 117, 216);
+            font-weight: bold;
+            
+        }
+
+        tr:nth-child(2) {
+            background-color: rgb(219, 78, 78);
+            color: white;
+        }
+
+        div {
+            position: relative;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("button")[0].addEventListener("click", function () {
+
+                fetch("http://localhost:8080/myw/marvel_movie.json")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(movies => {
+                        console.log(movies);
+                        var div = document.querySelector("div");
+                        div.innerText = "";
+                        var table = document.createElement("table");
+                        div.appendChild(table);
+
+
+
+                        var thTr = document.createElement("tr");
+                        table.appendChild(thTr);
+                        var yearTh = document.createElement("th");
+                        yearTh.innerText = "연도";
+                        var titleTh = document.createElement("th");
+                        titleTh.innerHTML = "제목<br>원제";
+                        var directorTh = document.createElement("th");
+                        directorTh.innerText = "감독";
+                        var stateTh = document.createElement("th");
+                        stateTh.innerText = "상태";
+                        thTr.append(yearTh, titleTh, directorTh, stateTh);
+
+                        var thTr2 = document.createElement("tr");
+                        table.appendChild(thTr2)
+                        var infiniteTd = document.createElement("td")
+                        infiniteTd.colSpan = 4;
+                        infiniteTd.innerText = "인피티니 사가";
+                        thTr2.appendChild(infiniteTd);
+
+                        var thTr3 = document.createElement("tr");
+                        thTr3.style.backgroundColor = "rgb(255, 51, 34)";
+                        thTr3.style.color = "white";
+                        table.appendChild(thTr3)
+                        var phaseTd = document.createElement("td")
+                        phaseTd.colSpan = 4;
+                        phaseTd.innerText = "페이즈 1";
+                        thTr3.appendChild(phaseTd);
+
+
+                        var moviesPhase1 = [];
+                        var moviesPhase2 = [];
+                        for (const movie of movies) {
+                            if (movie.phase == "페이즈 1"){
+                                moviesPhase1.push(movie);
+                            } else {
+                                moviesPhase2.push(movie);
+                            }
+                        }
+                        console.log(moviesPhase1);
+                        console.log(moviesPhase2);
+
+                        
+                        var statusFlag = true;
+
+                        var oldYearFlag = true;
+                        var oldYear = "";
+                        var firstOldYear
+                        var rowSpanCnt = 2;
+
+                        var statusFlag = true;
+                        var oldStatusFlag = true;
+                        var oldStatus = "";
+                        var firstOldStatus
+                        var statusRowSpanCnt = 2;
+                        for (let i = 0; i < moviesPhase1.length; i++) {
+
+                            var tr = document.createElement("tr");
+                            
+                            console.log("year: ", moviesPhase1[i].year);
+                            console.log("oldyear: ", oldYear);
+                            if(moviesPhase1[i].year == oldYear){
+                                if(oldYearFlag){
+                                    firstOldYear = year;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                    oldYearFlag = false;
+                                } else {
+                                    yearRowSpanCnt++;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                }
+                            } else {
+                                yearRowSpanCnt = 2;
+                                oldYearFlag = true;
+                                var year = document.createElement("td");
+                                tr.append(year);
+                            }
+                            var title = document.createElement("td");
+                            var director = document.createElement("td");
+
+                            year.innerText = moviesPhase1[i].year;
+                            title.innerHTML = "<span id = 'korTitle'>" +moviesPhase1[i].titleKor +"</span>" + "<br>" + moviesPhase1[i].titleEng;
+                            director.innerText = moviesPhase1[i].director;
+                            tr.append(title, director);
+                            
+                            
+                            console.log("new: ", moviesPhase1[i].status);
+                            console.log("old: ", oldStatus);
+                            if(moviesPhase1[i].status == oldStatus){
+                                if(oldStatusFlag){
+                                    firstOldStatus = status;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                    oldStatusFlag = false;
+                                } else {
+                                    statusRowSpanCnt++;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                }
+                            } else {
+                                statusRowSpanCnt = 2;
+                                oldStatusFlag = true;
+                                var status = document.createElement("td");
+                                tr.append(status);
+                            }
+                            status.innerText = moviesPhase1[i].status;
+
+                            table.append(tr);
+
+                            oldYear = moviesPhase1[i].year;
+                            oldStatus = moviesPhase1[i].status;
+                        }
+
+
+
+
+
+                        var thTr3 = document.createElement("tr");
+                        thTr3.style.backgroundColor = "rgb(255, 51, 34)";
+                        thTr3.style.color = "white";
+                        table.appendChild(thTr3)
+                        var phaseTd = document.createElement("td")
+                        phaseTd.colSpan = 4;
+                        phaseTd.innerText = "페이즈 2";
+                        thTr3.appendChild(phaseTd);
+
+  
+                        var oldYearFlag = true;
+                        var oldYear = "";
+                        var firstOldYear
+                        var yearRowSpanCnt = 2;
+
+                        var statusFlag = true;
+                        var oldStatusFlag = true;
+                        var oldStatus = "";
+                        var firstOldStatus
+                        var statusRowSpanCnt = 2;
+                        for (let i = 0; i < moviesPhase2.length; i++) {
+
+                            var tr = document.createElement("tr");
+                            
+                            console.log("year: ", moviesPhase2[i].year);
+                            console.log("oldyear: ", oldYear);
+                            if(moviesPhase2[i].year == oldYear){
+                                if(oldYearFlag){
+                                    firstOldYear = year;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                    oldYearFlag = false;
+                                } else {
+                                    yearRowSpanCnt++;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                }
+                            } else {
+                                yearRowSpanCnt = 2;
+                                oldYearFlag = true;
+                                var year = document.createElement("td");
+                                tr.append(year);
+                            }
+                            var title = document.createElement("td");
+                            var director = document.createElement("td");
+
+                            year.innerText = moviesPhase2[i].year;
+                            title.innerHTML = "<span id = 'korTitle'>" +moviesPhase2[i].titleKor +"</span>" + "<br>" + moviesPhase2[i].titleEng;
+                            director.innerText = moviesPhase2[i].director;
+                            tr.append(title, director);
+                            
+                            
+                            console.log("new: ", moviesPhase2[i].status);
+                            console.log("old: ", oldStatus);
+                            if(moviesPhase2[i].status == oldStatus){
+                                if(oldStatusFlag){
+                                    firstOldStatus = status;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                    oldStatusFlag = false;
+                                } else {
+                                    statusRowSpanCnt++;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                }
+                            } else {
+                                statusRowSpanCnt = 2;
+                                oldStatusFlag = true;
+                                var status = document.createElement("td");
+                                tr.append(status);
+                            }
+                            status.innerText = moviesPhase2[i].status;
+
+                            table.append(tr);
+
+                            oldYear = moviesPhase2[i].year;
+                            oldStatus = moviesPhase2[i].status;
+                        }
+
+
+
+ 
+                    })
+                    .catch()
+
+            });
+            document.querySelectorAll("button")[1].addEventListener("click", function () {
+
+                fetch("http://localhost:8080/myw/marvel_movie.json")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(movies => {
+                        console.log(movies);
+                        var div = document.querySelector("div");
+                        div.innerText = "";
+                        var table = document.createElement("table");
+                        div.appendChild(table);
+
+
+
+                        var thTr = document.createElement("tr");
+                        table.appendChild(thTr);
+                        var yearTh = document.createElement("th");
+                        yearTh.innerText = "연도";
+                        var titleTh = document.createElement("th");
+                        titleTh.innerHTML = "제목<br>원제";
+                        var directorTh = document.createElement("th");
+                        directorTh.innerText = "감독";
+                        var stateTh = document.createElement("th");
+                        stateTh.innerText = "상태";
+                        thTr.append(yearTh, titleTh, directorTh, stateTh);
+
+                        var thTr2 = document.createElement("tr");
+                        table.appendChild(thTr2)
+                        var infiniteTd = document.createElement("td")
+                        infiniteTd.colSpan = 4;
+                        infiniteTd.innerText = "인피티니 사가";
+                        thTr2.appendChild(infiniteTd);
+
+                        var thTr3 = document.createElement("tr");
+                        thTr3.style.backgroundColor = "rgb(255, 51, 34)";
+                        thTr3.style.color = "white";
+                        table.appendChild(thTr3)
+                        var phaseTd = document.createElement("td")
+                        phaseTd.colSpan = 4;
+                        phaseTd.innerText = "페이즈 1";
+                        thTr3.appendChild(phaseTd);
+
+
+                        var moviesPhase1 = [];
+                        var moviesPhase2 = [];
+                        for (const movie of movies) {
+                            if (movie.phase == "페이즈 1"){
+                                moviesPhase1.push(movie);
+                            } else {
+                                moviesPhase2.push(movie);
+                            }
+                        }
+                        console.log(moviesPhase1);
+                        console.log(moviesPhase2);
+
+                        
+                        var statusFlag = true;
+
+                        var oldYearFlag = true;
+                        var oldYear = "";
+                        var firstOldYear
+                        var rowSpanCnt = 2;
+
+                        var statusFlag = true;
+                        var oldStatusFlag = true;
+                        var oldStatus = "";
+                        var firstOldStatus
+                        var statusRowSpanCnt = 2;
+                        for (let i = 0; i < moviesPhase1.length; i++) {
+
+                            var tr = document.createElement("tr");
+                            
+                            console.log("year: ", moviesPhase1[i].year);
+                            console.log("oldyear: ", oldYear);
+                            if(moviesPhase1[i].year == oldYear){
+                                if(oldYearFlag){
+                                    firstOldYear = year;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                    oldYearFlag = false;
+                                } else {
+                                    yearRowSpanCnt++;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                }
+                            } else {
+                                yearRowSpanCnt = 2;
+                                oldYearFlag = true;
+                                var year = document.createElement("td");
+                                tr.append(year);
+                            }
+                            var title = document.createElement("td");
+                            var director = document.createElement("td");
+
+                            year.innerText = moviesPhase1[i].year;
+                            title.innerHTML = "<span id = 'korTitle'>" +moviesPhase1[i].titleKor +"</span>" + "<br>" + moviesPhase1[i].titleEng;
+                            director.innerText = moviesPhase1[i].director;
+                            tr.append(title, director);
+                            
+                            
+                            console.log("new: ", moviesPhase1[i].status);
+                            console.log("old: ", oldStatus);
+                            if(moviesPhase1[i].status == oldStatus){
+                                if(oldStatusFlag){
+                                    firstOldStatus = status;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                    oldStatusFlag = false;
+                                } else {
+                                    statusRowSpanCnt++;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                }
+                            } else {
+                                statusRowSpanCnt = 2;
+                                oldStatusFlag = true;
+                                var status = document.createElement("td");
+                                tr.append(status);
+                            }
+                            status.innerText = moviesPhase1[i].status;
+
+                            table.append(tr);
+
+                            oldYear = moviesPhase1[i].year;
+                            oldStatus = moviesPhase1[i].status;
+                        }
+
+ 
+                    })
+                    .catch()
+
+            });
+
+            document.querySelectorAll("button")[2].addEventListener("click", function () {
+
+                fetch("http://localhost:8080/myw/marvel_movie.json")
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(movies => {
+                        console.log(movies);
+                        var div = document.querySelector("div");
+                        div.innerText = "";
+                        var table = document.createElement("table");
+                        div.appendChild(table);
+
+
+
+                        var thTr = document.createElement("tr");
+                        table.appendChild(thTr);
+                        var yearTh = document.createElement("th");
+                        yearTh.innerText = "연도";
+                        var titleTh = document.createElement("th");
+                        titleTh.innerHTML = "제목<br>원제";
+                        var directorTh = document.createElement("th");
+                        directorTh.innerText = "감독";
+                        var stateTh = document.createElement("th");
+                        stateTh.innerText = "상태";
+                        thTr.append(yearTh, titleTh, directorTh, stateTh);
+
+                        var thTr2 = document.createElement("tr");
+                        table.appendChild(thTr2)
+                        var infiniteTd = document.createElement("td")
+                        infiniteTd.colSpan = 4;
+                        infiniteTd.innerText = "인피티니 사가";
+                        thTr2.appendChild(infiniteTd);
+
+                        var thTr3 = document.createElement("tr");
+                        thTr3.style.backgroundColor = "rgb(255, 51, 34)";
+                        thTr3.style.color = "white";
+                        table.appendChild(thTr3);
+
+
+                        var moviesPhase1 = [];
+                        var moviesPhase2 = [];
+                        for (const movie of movies) {
+                            if (movie.phase == "페이즈 1"){
+                                moviesPhase1.push(movie);
+                            } else {
+                                moviesPhase2.push(movie);
+                            }
+                        }
+                       
+
+
+
+                        var thTr3 = document.createElement("tr");
+                        thTr3.style.backgroundColor = "rgb(255, 51, 34)";
+                        thTr3.style.color = "white";
+                        table.appendChild(thTr3)
+                        var phaseTd = document.createElement("td")
+                        phaseTd.colSpan = 4;
+                        phaseTd.innerText = "페이즈 2";
+                        thTr3.appendChild(phaseTd);
+
+  
+                        var oldYearFlag = true;
+                        var oldYear = "";
+                        var firstOldYear
+                        var yearRowSpanCnt = 2;
+
+                        var statusFlag = true;
+                        var oldStatusFlag = true;
+                        var oldStatus = "";
+                        var firstOldStatus
+                        var statusRowSpanCnt = 2;
+                        for (let i = 0; i < moviesPhase2.length; i++) {
+
+                            var tr = document.createElement("tr");
+                            
+                            console.log("year: ", moviesPhase2[i].year);
+                            console.log("oldyear: ", oldYear);
+                            if(moviesPhase2[i].year == oldYear){
+                                if(oldYearFlag){
+                                    firstOldYear = year;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                    oldYearFlag = false;
+                                } else {
+                                    yearRowSpanCnt++;
+                                    firstOldYear.rowSpan = yearRowSpanCnt;
+                                }
+                            } else {
+                                yearRowSpanCnt = 2;
+                                oldYearFlag = true;
+                                var year = document.createElement("td");
+                                tr.append(year);
+                            }
+                            var title = document.createElement("td");
+                            var director = document.createElement("td");
+
+                            year.innerText = moviesPhase2[i].year;
+                            title.innerHTML = "<span id = 'korTitle'>" +moviesPhase2[i].titleKor +"</span>" + "<br>" + moviesPhase2[i].titleEng;
+                            director.innerText = moviesPhase2[i].director;
+                            tr.append(title, director);
+                            
+                            
+                            console.log("new: ", moviesPhase2[i].status);
+                            console.log("old: ", oldStatus);
+                            if(moviesPhase2[i].status == oldStatus){
+                                if(oldStatusFlag){
+                                    firstOldStatus = status;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                    oldStatusFlag = false;
+                                } else {
+                                    statusRowSpanCnt++;
+                                    firstOldStatus.rowSpan = statusRowSpanCnt;
+                                }
+                            } else {
+                                statusRowSpanCnt = 2;
+                                oldStatusFlag = true;
+                                var status = document.createElement("td");
+                                tr.append(status);
+                            }
+                            status.innerText = moviesPhase2[i].status;
+
+                            table.append(tr);
+
+                            oldYear = moviesPhase2[i].year;
+                            oldStatus = moviesPhase2[i].status;
+                        }
+
+
+
+ 
+                    })
+                    .catch()
+
+            });
+
+
+            
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Marvel Movie</h1>
+    <hr>
+    
+    <button>모든 영화</button>
+    <button>페이즈 1</button>
+    <button>페이즈 2</button>
+    
+    <div>
+
+    </div>
+</body>
+
+</html>

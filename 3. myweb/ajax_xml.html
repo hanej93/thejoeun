@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax_xml</title>
+    <script>
+        window.addEventListener("DOMContentLoaded", function(){
+            document.querySelector("button").onclick = function () {
+                // ajax
+                // 객체를 생성
+                // 서버에 클라이언트가 데이터를 요청 및 응답을 처리해주는 객체
+                var xhr = new XMLHttpRequest();
+
+                // 응답이 왔을 때에 처리해주는 로직을 정의
+                // xhr에 데이터가 로드되었을 때 실행된다
+                xhr.onload = function () {
+                    if(xhr.status == 200){ // 응답이 정상적이나?
+
+                        // 로드된 데이터를 사용하자!
+                        var data = xhr.responseXML;
+                        // console.log(data);
+                        // console.dir(data);
+                        // var items = data.querySelectorAll("item");
+                        // console.log(items);
+                        var names = data.querySelectorAll("name");
+                        var prices = data.querySelectorAll("price");
+
+                        // ul, li로 만들어주자
+                        // 이름:가격
+                        var ul = document.createElement("ul");
+                        var str = "";
+                        for(let i = 0 ; i <names.length; i++){
+                            str += "<li>" + names[i].innerHTML + ":" + prices[i].innerHTML + "</li>";
+                        }
+                        ul.innerHTML = str;
+                        document.querySelector("body").append(ul);
+                    }
+                }
+
+
+                // 요청 정보를 설정한다
+                // xhr.open("전송방식", "요청URL", "비동기여부")
+                xhr.open("get", "http://localhost:8080/myweb/data.xml", true);
+
+                // 요청 내용을 서버로 보낸다
+                xhr.send();
+
+                // 이렇게 쓰면 데이터가 넘어오기 전에 이미 콘솔을 찍기때문에
+                // null이 출력된다.
+                // 응답받은 내용을 콘솔로 찍어보자
+                // console.log(xhr.responseXML);
+                // console.log("끝");
+            }
+
+        });
+    </script>
+</head>
+<body>
+    <h1>ajax를 이용하여 데이터 가져오기</h1>
+    <button>데이터 가져오기</button>
+</body>
+</html>

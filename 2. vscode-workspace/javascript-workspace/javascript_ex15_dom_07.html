@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>요소 추가 삭제</title>
+</head>
+
+<body>
+    <h1>element 생성과 삭제</h1>
+    <dl>
+        <dt>요소를 추가하는 방법</dt>
+        <dd>
+            <ol>
+                <li>innerHTML에 직접 문자열로 태그를 만들어 추가
+                    <ul>
+                        <li>element.innerHTML = "&lt;li&gt;추가하는 아이&lt;/li&gt;"</li>
+                    </ul>
+                </li>
+                <li>요소 & 텍스트노드 생성 함수를 이용하는 방법
+                    <ul>
+                        <li>요소 생성 : createElement("태그명")</li>
+                        <li>텍스트노드 생성 : createTextNode("글자")</li>
+                        <li>노드 추가
+                            <ul>
+                                <li>appendChild(추가할 노드객체)</li>
+                                <li>insertBefore(추가할자식, 기존자식)</li>
+                            </ul>
+                        </li>
+                        <li></li>
+                    </ul>
+                </li>
+            </ol>
+        </dd>
+        <dt>노드 삭제 방법</dt>
+        <dd>
+            <ol>
+                <li>태그로 직접 지움
+                    <ul>
+                        <li>innerHTML = ""</li>
+                    </ul>
+                </li>
+                <li>삭제 메서드 활용
+                    <ul>
+                        <li>부모요소.removeChild(지울자식객체)</li>
+                        <li>지우려는아이.remove()</li>
+                    </ul>
+                </li>
+            </ol>
+        </dd>
+    </dl>
+
+
+    <ul>
+        <li>맛집!
+            <ol id="target">
+                
+            </ol>
+        </li>
+    </ul>
+
+    <script>
+        var ol = document.querySelector("#target");
+        // html을 직접 문자열로 추가
+        ol.innerHTML = "<li>샐러드로우</li>";
+
+        // 요소객체를 생성해서 추가
+        // li 객체를 생성
+        var li = document.createElement("li");
+        // li 객체안에 글자를 추가
+        li.innerHTML = "이경문순대국";
+        // ol에 붙여주는 작업
+        ol.appendChild(li);
+
+        // 요소객체 생성해서 추가
+        var li_01 = document.createElement("li");
+        // textNode 생성
+        var text = document.createTextNode("뚝배기");
+        // 텍스트를 li객체에 붙여줌
+        li_01.appendChild(text);
+
+        // ol의 두번째 아이로 넣어줘볼까?
+        ol.insertBefore(li_01, li);
+
+        // 이경문 순대국은 더블클릭했을 때 지워지게 해보자
+        li.addEventListener("dblclick", function () {
+            // this.remove();
+            this.parentNode.removeChild(this);
+        });
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>요소 추가 삭제 실습</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 250px;
+            text-align: center;
+            position: relative;
+            margin: auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="name" placeholder="이름을 입력하세요">
+    <input type="text" id="age" placeholder="나이를 입력하세요">
+    <button id="addNameAgeBt">추가</button>
+    <button id="removeNameAgeBt">삭제</button>
+    <hr>
+    <table id = 'customerTable'>
+        <tr>
+            <th style="width: 20%">번호</th>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+    </table>
+
+    <script>
+        // 이름과 나이를 입력 후 추가 버튼을 클릭 시
+        // 테이블 안쪽에 이름, 나이값이 들어가도록 기능을 구현하세요
+        // 추가
+
+        var bt = document.querySelector("#addNameAgeBt");
+        var tableNum = "1";
+        bt.addEventListener("click", function () {
+            var name = document.querySelector("#name").value;
+            var age = document.querySelector("#age").value;
+
+            if (document.querySelector("#name").value == "") {
+                alert("이름을 입력해주세요!");
+                return;
+            }
+            if (document.querySelector("#age").value == "") {
+                alert("나이를 입력해주세요!");
+                return;
+            }
+
+            var table = document.querySelector("table");
+            var tr = document.createElement("tr");
+            var tdName = document.createElement("td");
+            var tdAge = document.createElement("td");
+            var textName = document.createTextNode(name);
+            var textAge = document.createTextNode(age);
+
+            var tdNum = document.createElement("td");
+            textNum = document.createTextNode(tableNum);
+            tdNum.appendChild(textNum);
+            tableNum++;
+            tr.appendChild(tdNum);
+
+            tdName.appendChild(textName);
+            tdAge.appendChild(textAge);
+            tr.appendChild(tdName);
+            tr.appendChild(tdAge);
+            table.appendChild(tr);
+
+            document.querySelector("#name").value = "";
+            document.querySelector("#age").value = "";
+
+            tdName.ondblclick = function () {
+                this.innerHTML = "<input type='text' id='modName' placeholder='수정할 이름을 입력하세요'>";
+                var inputName = this;
+
+                var modName = document.querySelector("#modName");
+                modName.addEventListener('keydown', function () {
+                    console.dir(event);
+                    if (event.keyCode == "13") {
+                        inputName.innerText = document.querySelector("#modName").value;
+                    }
+                });
+            };
+            tdAge.ondblclick = function () {
+                this.innerHTML = "<input type='text' id='modAge' placeholder='수정할 나이을 입력하세요'>";
+                var inputAge = this; // td 객체의 this
+
+                var modAge = document.querySelector("#modAge");
+                modAge.addEventListener('keydown', function () {
+                    console.dir(event);
+                    if (event.keyCode == "13") {
+                        inputAge.innerText = document.querySelector("#modAge").value;
+                    }
+                });
+            };
+            tdNum.ondblclick = function () {
+                this.innerHTML = "<input type='text' id='modNum' placeholder='수정할 번호를 입력하세요'>";
+                var inputNum = this;
+
+                var modNum = document.querySelector("#modNum");
+                modNum.addEventListener('keydown', function () {
+                    console.dir(event);
+                    if (event.keyCode == "13") {
+                        inputNum.innerText = document.querySelector("#modNum").value;
+                    }
+                });
+            };
+        });
+
+
+        // 삭제 버튼을 추가하고
+        // 이름을 인풋에 입력 후 삭제버튼을 클릭 시 해당되는 이름이 있는
+        // 로우를 삭제
+        var delBt = document.querySelector("#removeNameAgeBt");
+        delBt.addEventListener("click", function () {
+            var name = document.querySelector("#name").value;
+            var trArr = document.querySelectorAll("tr");
+            console.log(name);
+            console.log(document.querySelectorAll("tr"));
+            console.log(document.querySelectorAll("#customerTable tr"));
+            for (let i = 1; i < document.querySelectorAll("tr").length; i++) {
+                if (document.querySelectorAll("#customerTable tr")[i].children[1].innerText == name) {
+                    document.querySelectorAll("#customerTable tr")[i].parentNode.removeChild(document.querySelectorAll("tr")[
+                        i]);
+
+                }
+            }
+        });
+       
+        // 더블클릭 시 해당되는 내용을 수정할 수 있도록 기능 구현
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>마진</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+
+        .ex01 {
+            background: red;
+            margin: 10px 5px;
+        }
+
+        .ex02 {
+            background: blue;
+            margin: 10px 0px 10px 5px;
+        }
+
+        .ex03{
+            background:yellowgreen;
+            border: 1px solid black;
+            width:200px;
+            height:200px;
+        }
+        .ex04{
+            background: green;
+            margin-top:10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>margin</h1>
+    요소와 요소 사이의 여백
+    <div class="ex01"></div>
+    <div class="ex02"></div>
+
+    <<위 아래에 마진이 겹침 현상>><br>
+    두 블럭이 위 아래로 겹쳤을 때<br>
+    부모 자식으로 겹쳐있을 때<br>
+
+    <div class="ex03">
+        <div class="ex04"></div>
+    </div>
+    
+
+</body>
+
+</html>

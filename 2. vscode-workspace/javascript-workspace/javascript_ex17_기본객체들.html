@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>기본객체</title>
+</head>
+<body>
+    <h1>문자열, 숫자, 날짜</h1>
+    <dl>
+        <dt>문자열 : String</dt>
+        <dd>문자열을 자르고, 붙이고, 추출하고 하는 기능</dd>
+        <dt>숫자 : Math</dt>
+        <dd>숫자의 올림, 내림, 자르기, 최대값, 최소값 기능 등등</dd>
+        <dt>날짜 : Date</dt>
+        <dd>연월일 계산</dd>
+    </dl>
+    <script>
+        // 문자열
+        var str1 = "귀여운 뚜루루뚜루 바닷속 뚜루루뚜루";
+        // 문자열 길이
+        console.log("문자열길이:",str1.length);
+        // "바닷속" 글자 위치는?
+        console.log("바닷속글자 위치:",str1.indexOf("바닷속"));
+        //문자열 추출 ("바닷속")
+        console.log(str1.substring(10,13));
+
+        // 문자열나누기
+        var str2 = "010-9999-5555";
+        var str2Arr = str2.split("-");
+        console.log(str2Arr);
+    </script>
+    <p id = "test">Stay hungry, Stay Foolish</p>
+    <button>대문자로 변경</button>
+    <button>소문자로 변경</button>
+    <script>
+        var pTag = document.querySelector("#test");
+        pTag.nextElementSibling.onclick = function () {
+            var str = pTag.innerHTML;
+            var upper = str.toUpperCase();
+            pTag.innerHTML = upper;
+        }
+        pTag.nextElementSibling.nextElementSibling.onclick = function () {
+            var str = pTag.innerHTML;
+            var lower = str.toLowerCase();
+            pTag.innerHTML = lower;
+        }
+
+        // math
+        // 랜덤
+        var ranNumber = Math.random();
+        // 내림
+        console.log(Math.floor(ranNumber*10));
+        //올림
+        console.log(Math.ceil(ranNumber*10));
+        //반올림
+        console.log(Math.round(ranNumber*10));
+        
+
+        // Date
+        // 날짜 관련
+        var d = new Date();
+        console.log(d);
+        console.log("연도:", d.getFullYear());
+        console.log("월:", d.getMonth());
+        console.log("일:",d.getDate());
+        console.log("요일 숫자:",d.getDay()); //0이 일요일
+        console.log("시:",d.getHours()); 
+        console.log("분:",d.getMinutes());
+        console.log("초:",d.getSeconds());
+        
+        // set 메서드
+        // 50일 뒤는?
+        console.log(d.setDate(d.getDate() + 50));
+        console.log(d);
+
+    </script>
+</body>
+</html>

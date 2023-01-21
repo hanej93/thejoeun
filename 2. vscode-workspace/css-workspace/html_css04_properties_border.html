@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>테두리 속성</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+        }
+
+        .bd_red{
+            border-width: 1px 2px 3px 4px; /* 위 오른 아래 왼 */
+            border-style: solid dotted dashed; /* 위 좌-우 아래 */
+            border-color: red blue; /* 위-아래 좌-우 */
+        }
+
+        h1{
+            border: 5px double gray;
+        }
+
+        .bd_radius{
+            border: 3px solid black;
+            border-radius: 50% 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>border</h1>
+    <div class="bd_red"></div>
+    <div class="bd_radius">둥근 테두리</div>
+    
+</body>
+</html>

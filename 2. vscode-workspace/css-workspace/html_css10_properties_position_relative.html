@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position-3</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        div.ex01{
+            background: turquoise;
+            position: relative;
+            top:0;
+            left:0;
+        }
+        div.ex02{
+            background: violet;
+            position: relative;
+            top:50px;
+            left:50px;
+        }
+        div.ex03{
+            background: yellowgreen;
+            position: relative;
+            top:0;
+            left: 200px;
+        }
+        div.ex04{
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            position: relative;
+        }
+        div.ex05{
+            background: tomato;
+            position: relative;
+            top: 50px;
+            left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- relative 속성 static이 있는(원래 있어야 하는 위치를 기준으로 잡음) -->
+    <div class="ex01"></div>
+    <div class="ex02"></div>
+    <div class="ex03"></div>
+    <div class="ex04">
+        <div class="ex05"></div>
+    </div>
+</body>
+</html>

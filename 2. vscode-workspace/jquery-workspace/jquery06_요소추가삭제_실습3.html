@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레시피</title>
+    <script src="../jquery-3.6.0.js"></script>
+
+    <style>
+        .blueborder {
+            border: 1px solid blue;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("select").click(function () {
+                var selectedOpt = $("select option:selected");
+                
+            });
+
+            $("input[type=button]").click(function () {
+                var selectedOpt = $("select option:selected");
+
+                console.log(selectedOpt.val() == "supplies");
+                if (selectedOpt.val() == "supplies") {
+                    $("ul").addClass('blueborder');
+                    $("ol").removeClass('blueborder');
+
+                } else if (selectedOpt.val() == "recipe") {
+                    $("ol").addClass('blueborder');
+                    $("ul").removeClass('blueborder');
+                }
+
+                var inputText = $("input[name=inputText]").val();
+                var liParent = $("*[class=blueborder");
+                var li = $('<li>');
+                li.text(inputText);
+                console.log(li);
+                liParent.append(li);
+
+                $("li").dblclick(function () {
+                    console.log($(this));
+                    $(this).html(
+                        "<input type='text' name='updateText' placeholder='수정할 문자열을 입력바랍니다.'>"
+                        );
+                    var thisList = $(this);
+                    $("input[name=updateText]").keydown(function(key){
+                        if(key.keyCode == '13'){
+                            thisList.html($('input[name=updateText]').val());
+                        }
+                    });
+                    
+                });
+            });
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <select name="choice" id="">
+        <option value="supplies">준비물</option>
+        <option value="recipe">조리법</option>
+    </select>
+    
+    <input type="text" name="inputText" id="">
+    <input type="button" value="추가">
+    <h1>된장찌개 레시피</h1>
+    <dl>
+        <dd>준비물</dd>
+        <dt>
+            <ul>
+
+            </ul>
+        </dt>
+        <dd>조리법</dd>
+        <dt>
+            <ol>
+
+            </ol>
+        </dt>
+    </dl>
+</body>
+
+</html>

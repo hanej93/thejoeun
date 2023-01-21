@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Images</title>
+
+</head>
+
+<body>
+    <h1>Image 태그</h1>
+    <img src="images/barista-6197867_1280.jpg" width="600" alt="이미지가 없음 바리스타 이미지" title="바리스타">
+
+    <hr>
+    <!-- 네이버 로고 이미지를 캡처해와서
+    네이버 로고 이미지를 화면에 보여주고, 클릭시 네이버 사이트로 이동하도록 만들어보세요. -->
+    <a href="https://www.naver.com" target="_blank"><img src="images/naver_logo.jpg" alt="이미지 없음 네이버 로고"
+            title="네이버 로고"></a>
+
+    <hr>
+
+    <img src="images/naver_map_logo.png" alt="naver_map_logo" usemap="#naver_map">
+
+    <map name="naver_map">
+        <!-- coords : 왼쪽위(x,y) 오른쪽아래(x,y) -->
+        <area shape="rect" coords="5, 40, 237, 102" href="https://www.naver.com"  target="_blank" alt="네이버_로고">
+    </map>
+
+    <hr>
+    <figure>
+        <img src="images/imgmap_test.jpg" alt="다각형 화면" usemap="#imgmap_test">
+        <figcaption>로고들</figcaption>
+    </figure>
+    
+
+    <map name="imgmap_test">
+        <area shape="poly" coords="140, 62, 365, 107, 412, 223, 335, 377, 111, 335, 66, 215" href="https://www.naver.com" alt="네이버_링크" title="네이버">
+        <area shape="circle" coords="658,180, 129" href="https://www.google.com" alt="구글_링크" title="구글">
+        <area shape="rect" coords="591, 385, 969, 470" href="https://www.daum.net" alt="다음_링크" title="다음">
+    </map>
+    
+
+
+</body>
+
+</html>

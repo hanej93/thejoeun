@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BOM객체</title>
+</head>
+
+<body>
+    <h1>BOM</h1>
+    <dl>
+        <dt>window</dt>
+        <dd>
+            <ul>
+                <li>브라우저를 관리하는 객체</li>
+                <li>생략이 가능하다</li>
+                <li>모든함수, 객체, 변수는 윈도우 안에 들어감</li>
+                <li>브라우저 화면에 관련된 속성과 기능이 있음</li>
+            </ul>
+        </dd>
+        <dd id="ex01">
+            <button>윈도우 높이와 넓이</button>
+            <p>넓이와 높이 출력</p>
+        </dd>
+        <script>
+            document.getElementById("ex01").firstElementChild.onclick = function () {
+                var innerHeight = window.innerHeight;
+                var innerWidth = window.innerWidth;
+                var str = "innerWidth: " + innerWidth + " , innerHeight: " + innerHeight;
+
+                var outerHeight = window.outerHeight;
+                var outerWidht = window.outerWidth;
+                str += "<br>" + "outerWidth: " + outerWidth + " , outerHeight: " + outerHeight;
+
+                this.nextElementSibling.innerHTML = str;
+
+
+            };
+        </script>
+        <dt>screen</dt>
+        <dd>
+            <ul>
+                <li>스크린 화면관련 객체</li>
+                <li>높이, 넓이, 사용가능한 높이와 넓이</li>
+            </ul>
+        </dd>
+        <dd id="ex02">
+            <button>screen을 이용한 높이와 넓이</button>
+            <p>넓이와 높이 출력</p>
+        </dd>
+        <script>
+            document.querySelector("#ex02>button").onclick = function () {
+                var screenWidth = screen.width;
+                var screenHeight = screen.height;
+
+                var availWidth = screen.availWidth;
+                var availHeight = screen.availHeight;
+
+                var str = "screenWidth: " + screenWidth + " , screenHeight: " + screenHeight;
+                str += "<br>";
+                str += "availWidth: " + availWidth + " , availHeight" + availHeight;
+                this.nextElementSibling.innerHTML = str;
+            };
+        </script>
+        <dt>location</dt>
+        <dd>
+            <ul>
+                <li>위치 관련한 기능</li>
+                <li>현재 페이지url or path</li>
+                <li>페이지 전환</li>
+            </ul>
+        </dd>
+        <dd id="ex03">
+            <button>현재 페이지 주소정보 가져오기</button>
+            <p>주소 정보</p>
+            <button>페이지 전환</button>
+        </dd>
+        <script>
+            var btnList = document.querySelectorAll("#ex03>button");
+            btnList[0].onclick = function () {
+                var str;
+                var protocol = location.protocol;
+                var path = location.pathname;
+                var host = location.hostname;
+                str = "프로토콜: " + protocol + "<br>경로: " + path;
+                str += "<br>";
+                str += "호스트: " + host;
+
+                this.nextElementSibling.innerHTML = str;
+
+            };
+            btnList[1].onclick = function () {
+                //히스토리를 남김
+                location.href = "https://www.naver.com";
+                // location.assign("https://www.naver.com");
+
+                // 히스토리를 남기지 않음
+                // location.replace("https://www.naver.com");  
+            };
+        </script>
+        <dt>history</dt>
+        <dd>
+            <ul>
+                <li>페이지의 방문기록</li>
+                <li>뒤로가기, 앞으로가기</li>
+            </ul>
+        </dd>
+        <dd id="ex04">
+            <button>이전</button>
+            <button>다음</button>
+        </dd>
+        <script>
+            var ex04Btn = document.querySelectorAll("#ex04>button");
+            ex04Btn[0].onclick = function () {
+                history.back();
+            }
+
+            ex04Btn[0].onclick = function () {
+                // 인자값 
+                // 음수: 뒤로가기
+                // 0   : 새로고침
+                // 양수: 앞으로가기
+
+                history.go(1);
+            }
+        </script>
+
+        <dt>popup box</dt>
+        <dd>
+            <ul>
+                <li>alert("메시지") : 경고창</li>
+                <li>confirm("메시지") : 확인 취소버튼이 있는 팝업창</li>
+                <li>prompt("메시지") : 입력할 수 있는 팝업창</li>
+            </ul>
+        </dd>
+        <dd id="ex05">
+            <button>경고창</button>
+            <button>확인창</button>
+            <button>프롬프트</button>
+            <p></p>
+        </dd>
+        <script>
+            var ex05Btn = document.querySelectorAll("#ex05>button");
+            ex05Btn[0].onclick = function () {
+                alert("경고창");
+            }
+            ex05Btn[1].onclick = function () {
+                var result = confirm("정말 진행하시겠습니까?");
+                if (result) {
+                    document.querySelector("#ex05>p").innerHTML = "네";
+                } else {
+                    document.querySelector("#ex05>p").innerHTML = "아니오";
+                }
+            }
+            ex05Btn[2].onclick = function () {
+                var result = prompt("당신의 이름은?");
+                document.querySelector("#ex05>p").innerHTML = result;
+            }
+        </script>
+
+        <dt>timing</dt>
+        <dd>
+            <ul>
+                <li>setTimeout(function, milliseconds) : 일정시간 뒤 동작</li>
+                <li>setInterval(function, milliseconds) : 일정시간마다 동작</li>
+            </ul>
+        </dd>
+        <dd id="ex06">
+            <button>일정 시간 후 실행</button>
+            <button>일정 시간마다 실행</button>
+            <button>반복되는 것을 중지</button>
+            <p></p>
+        </dd>
+        <script>
+            var ex06btn = document.querySelectorAll("#ex06>button");
+            ex06btn[0].onclick = function () {
+                setTimeout(() => {
+                   document.querySelector("#ex06>p").innerHTML = "너는 이미 졸고있다."
+                }, 3000);
+            };
+            var inter;
+            ex06btn[1].onclick = function () {
+                inter = setInterval(() => {
+                    document.querySelector("#ex06>p").innerHTML += "$";
+                }, 1000);
+            };
+            ex06btn[2].onclick = function () {
+                // 인터벌을 지움
+                clearInterval(inter);
+            }
+        </script>
+        <dt>cookies</dt>
+        <dd>
+            <ul>
+                <li>컴퓨터에 저장되는 텍스트형태의 데이터</li>
+                <li>"키=값"의 쌍을 이뤄 저장함</li>
+            </ul>
+        </dd>
+        <dd id="ex07">
+            <input type="text" name="myData" placeholder="값을 넣으세요">
+            <button>쿠키로 저장</button>
+            <button>쿠기에서 꺼내기</button>
+            <p>쿠키에 저장된 값</p>
+        </dd>
+        <script>
+            // 서버환경에서 실행이 되고
+            // file:// 로 열면 사용이 불가
+            var ex07Btn = document.querySelectorAll("#ex07>button");
+            ex07Btn[0].onclick = function () {
+                var data = this.previousElementSibling.value;
+                document.cookie = "data=" + data;
+            }
+
+            ex07Btn[1].onclick = function () {
+                // documnet.cookie
+                console.dir(document);
+            }
+        </script>
+    </dl>
+
+</body>
+
+</html>

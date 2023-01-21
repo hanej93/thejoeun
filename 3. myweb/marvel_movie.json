@@ -1,0 +1,15 @@
+[
+    {"phase":"페이즈 1","year":2008,"titleKor":"아이언맨","titleEng":"Iron Man","director":"존 패브로","status":"개봉"},
+    {"phase":"페이즈 1","year":2008,"titleKor":"아이언맨222","titleEng":"Iron Man","director":"존 패브로","status":"미개봉"},
+    {"phase":"페이즈 1","year":2008,"titleKor":"인크레더블 헐크","titleEng":"The Incredible Hulk","director":"루이 르테리에","status":"개봉"},
+    {"phase":"페이즈 1","year":2010,"titleKor":"아이언맨 2","titleEng":"Iron Man 2","director":"존 패브로","status":"개봉"},
+    {"phase":"페이즈 1","year":2011,"titleKor":"토르 : 천둥의 신","titleEng":"Thor","director":"케네스 브래너","status":"개봉"},
+    {"phase":"페이즈 1","year":2011,"titleKor":"캡틴 아메리카 : 퍼스트 어벤져","titleEng":"Captain America : The First Avenger","director":"조 존스턴","status":"개봉"},
+    {"phase":"페이즈 1","year":2012,"titleKor":"어벤져스","titleEng":"Marvel's Avengers","director":"조스 웨던","status":"개봉"},
+    {"phase":"페이즈 2","year":2013,"titleKor":"아이언맨 3","titleEng":"Iron Man 3","director":"셰인 블랙","status":"개봉"},
+    {"phase":"페이즈 2","year":2013,"titleKor":"토르 : 다크 월드","titleEng":"Thor : The Dark World","director":"엘렌 테일러","status":"개봉"},
+    {"phase":"페이즈 2","year":2014,"titleKor":"캡틴 아메리카 : 윈터 솔져","titleEng":"CapTain America : The Winter Soldier","director":"루소 형제","status":"미개봉"},
+    {"phase":"페이즈 2","year":2014,"titleKor":"가디언즈 오브 갤럭시","titleEng":"Guardians of the Galaxy","director":"제임스 건","status":"개봉"},
+    {"phase":"페이즈 2","year":2015,"titleKor":"어벤져스 : 에이지 오브 울트론","titleEng":"Avengers : Age of Ultron","director":"조스 웨던","status":"개봉"},
+    {"phase":"페이즈 2","year":2015,"titleKor":"앤트맨","titleEng":"Ant-Man","director":"페이턴 리드","status":"개봉"}
+]

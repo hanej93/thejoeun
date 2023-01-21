@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>id, class 속성</title>
+</head>
+<body>
+    <ul>
+        <li>첫째</li>
+        <li>둘째</li>
+        <li>셋째
+            <ol>
+                <li>셋째의 첫째 손자</li>
+                <li>셋째의 둘째 손자</li>
+                <li>셋째의 셋째 손자</li>
+            </ol>
+        </li>
+        <li class="red blue black">넷째</li>
+    </ul>
+    
+    <script>
+        // id를 추가하는 코드
+        let li = document.querySelectorAll("li");
+        li[0].id = "first";
+        li[1].id = "second";
+        li[2].id = "third";
+
+        // id를 제거하는 코드
+        let ul = document.querySelector("ul");
+        ul.id = "";
+        console.dir(ul);
+        
+        // 클래스 추가하기
+        var ol_li = document.querySelectorAll("ol>li");
+        for(let i = 0 ; i < ol_li.length ; i++){
+            ol_li[i].className = "ch";
+        }
+
+        // 클래스 제거하기
+        ol_li[2].className = "";
+
+        var ul_li = document.querySelectorAll("ul>li")[3];
+        console.log(ul_li);
+        // ul_li.className += " yellow";
+        ul_li.classList.add("yellow");
+
+        // blue 클래스만 제거
+        ul_li.classList.remove("blue");
+    </script>
+</body>
+</html>

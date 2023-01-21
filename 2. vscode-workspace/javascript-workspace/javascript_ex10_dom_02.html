@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>내용 변경</title>
+</head>
+<body>
+    <h1>요소의 내용 변경</h1>
+    <dl>
+        <dt>요소의 내용에 접근하는 속성</dt>
+        <dd>
+            <ul>
+                <li>innerHTML - 요소 안쪽 HTML</li>
+                <li>innerText  - 요소 안쪽 Text</li>
+            </ul>
+        </dd>
+    </dl>
+    <p class="ex01">안녕 <b>자바야!</b></p>
+    <p class="ex02">안녕 <b>자바야</b></p>
+
+    <script>
+        var ex01 = document.querySelector(".ex01");
+        var inner_html = ex01.innerHTML;
+        console.log(inner_html);
+
+        var ex02 = document.querySelector(".ex02");
+        var inner_text = ex02.innerText;
+        console.log(inner_text);
+
+        ex01.innerHTML = "<span>안녕 <b>HTML</b></span>";
+        ex02.innerText = "<span>안녕 <b>Javascript</b></span>";
+
+        // 자기자신까지 변경하는 요소
+        var outer_html = ex01.outerHTML;
+        ex01.outerHTML = "<ul><li>변경!</li></ul>";
+
+    </script>
+</body>
+</html>

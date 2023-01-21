@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>효과들</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("dt:contains(show/hide)").on("click", function () {
+                // if($(this).next().css("display") == "none"){
+                //     $(this).next().show();
+                // } else {
+                //     $(this).next().hide();
+                // }
+
+                $(this).next().toggle();
+            });
+
+            $("dt:contains(slideUp/slideDown)").on("click", function () {
+                // if($(this).next().css("display") == "none"){
+                //     $(this).next().slideDown();
+                // } else {
+                //     $(this).next().slideUp();
+                // }
+
+                // 메서드의 파라미터로 밀리초를 넣을 수 있음
+                $(this).next().slideToggle(2000,function(){
+                    // callback
+                    // 효과가 끝난 뒤 호출되는 함수
+                    alert("콜백!");
+                });
+            });
+
+            $("dt:contains(fadeIn/fadeOut)").on("click", function () {
+                // if($(this).next().css("display") == "none"){
+                //     $(this).next().fadeIn();
+                // } else {
+                //     $(this).next().fadeOut();
+                // }
+                // $(this).next().fadeToggle();
+                $(this).next().fadeOut().slideDown();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <dl>
+        <dt>show/hide</dt>
+        <dd>보여지게 하거나 숨기는 효과</dd>
+        <dt>slideUp/slideDown</dt>
+        <dd>미끄러지듯 사라지거나 나오게함</dd>
+        <dt>fadeIn/fadeOut</dt>
+        <dd>점점 흐려지며 사라지거나 나오게 함</dd>
+    </dl>
+
+</body>
+
+</html>

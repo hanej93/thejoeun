@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+
+<body>
+    <h1>요소를 선택하는 방법</h1>
+    <ul>
+        <li>선택자로 선택하는 방법
+            <ol>
+                <li>요소객체.querySelector("선택자")
+                    <ul>
+                        <li>하나의 요소를 선택하는 방법</li>
+                        <li>가장 위쪽 아이만 선택됨</li>
+                    </ul>
+                </li>
+                <li>요소객체.querySelectorAll("선택자")
+                    <ul>
+                        <li>여러 요소를 선택하여 배열 방식으로 쓰는 방법</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+        <li>태그로 선택하는 방법</li>
+        <ol>
+            <li>태그로 선택 - document.getElementsByTagName("태그명")
+                <ul>
+                    <li>배열형태로 선택된다</li>
+                </ul>
+            </li>
+        </ol>
+        <li>속성으로 선택하는 방법
+            <ol>
+                <li id="id_ex01">document.getElementById("id명")</li>
+                <ul>
+                    <li>하나의 객체로 선택된다</li>
+                </ul>
+                <li class="class_ex01">documnet.getElementsByClassName("클래스명")</li>
+                <ul>
+                    <li>배열형태로 선택된다</li>
+                </ul>
+            </ol>
+        </li>
+
+        <li>요소간의 관계로 선택하는 방법
+            <ol>
+                <li>노드(텍스트노드, 엘리먼트노드)로 접근한다</li>
+                <li>부모
+                    <ul>
+                        <li>요소객체.parentNode</li>
+                    </ul>
+                </li>
+                <li>형제
+                    <ul>
+                        <li>다음형제 - 요소객체.nextSibling</li>
+                        <li>이전형제 - 요소객체.previousSibling</li>
+                    </ul>
+                </li>
+                <li>자식
+                    <ul>
+                        <li>요소객체.childNodes</li>
+                        <li>마지막자식 - 요소객체.lastChild</li>
+                        <li>자식들 중 요소만 - 요소객체.children</li>
+                        <li>요소 중 마지막 자식 - 요소객체.lastElementChild</li>
+                    </ul>
+                </li>
+            </ol>
+        </li>
+    </ul>
+    <script>
+        // querySelector : 선택된 조건에서 가장 위에 해당되는 아이
+        var first_li = document.querySelector("ul>li>ol>li");
+        console.log(first_li);
+
+        // querySelectorAll 다중으로 선택
+        var li = document.querySelectorAll("ul>li>ol>li");
+        console.log(li);
+
+        // getElementsTagName 다중으로 선택
+        var ol = document.getElementsByTagName("ol");
+        console.log(ol);
+
+        // getElementById 하나만 선택
+        var id_ex01 = document.getElementById("id_ex01");
+        // var first_li = document.querySelector("ul>li>ol>li");
+        console.log(id_ex01);
+
+        // getElementsByClassName 다중으로 선택
+        var class_ex01 = document.getElementsByClassName("class_ex01");
+        console.log(class_ex01);
+
+        // body의 자식 ul의 마지막 자식 요소: li
+        // body 요소를 선택
+        var body = document.getElementsByTagName("body")[0];
+        // var bodyChildNodes = body.childNodes;
+        // console.log(bodyChildNodes);
+        var bodyChildren = body.children;
+        console.log(bodyChildren);
+        var ul = bodyChildren[1];
+        var ul_li = ul.lastElementChild;
+        console.log(ul_li);
+        console.log(ul_li.previousSibling);
+        
+    </script>
+</body>
+
+</html>

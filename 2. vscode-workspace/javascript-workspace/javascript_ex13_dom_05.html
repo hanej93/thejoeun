@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input관련 속성들</title>
+    <style>
+        .userId_error{
+            color:red;
+        }
+        .display_none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>폼, 인풋</h1>
+    <dl>
+        <dt>폼 객체 사용 방법</dt>
+        <dd>
+            <ul>
+                <li>폼 객체는 name 속성으로 접근이 가능하다</li>
+                <li>document.(폼 name속성 이름).(인풋의 name속성 이름)</li>
+                <li>직접 태그명으로도 접근이 가능함</li>
+                <li>폼 관련 input은 전부 value라는 속성을 이용한다</li>
+            </ul>
+        </dd>
+    </dl>
+    <form name="loginForm">
+        <span class="userId_error display_none">아이디를 입력하세요</span>
+        <input type="text" name="userId" placeholder="아이디를 입력하세요">
+        <fieldset>
+            <legend>취미</legend>
+            <label><input type="checkbox" name="hobby" value="game">게임</label>, 
+            <label><input type="checkbox" name="hobby" value="study">공부</label>, 
+            <label><input type="checkbox" name="hobby" value="sleep">낮잠</label>
+        </fieldset>
+        <fieldset>
+            <legend>성별</legend>
+            <label for=""><input type="radio" name="gender" value="male">남</label>
+            <label for=""><input type="radio" name="gender" value="female">여</label>
+        </fieldset>
+        <button type="button" onclick="check()">확인</button>
+    </form>
+    <script>
+        function check() {
+            // form 객체를 가져오기
+            // var form = document.querySelector("form");
+            var form = document.loginForm;
+
+            // userId 값을 가져와보기
+
+            // 아이디 체크
+            let e = document.querySelector(".userId_error");
+            var userId = form.userId;
+            if(userId.value == ""){
+                e.classList.remove("display_none");
+                return;
+            }
+            
+            // 취미 체크
+            var hobby = form.hobby;
+            let cnt = 0;
+            for (const h of hobby) {
+                if(!h.checked){
+                    cnt++;
+                }
+            }
+
+            if(cnt == 3){
+                e.innerHTML = "취미를 선택하세요";
+                e.classList.remove("display_none");
+                return;
+            }
+
+            // 성별을 체크했는지 확인
+            cnt = 0;
+            var gender = form.gender;
+            for (const g of gender) {
+                if(g.checked == false){
+                    cnt++;
+                }
+            }
+            if(cnt == 2){
+                e.innerHTML = "성별을 선택하세요";
+                e.classList.remove("display_none");
+                return;
+            }
+
+
+            // 전부 입력했을 시
+            e.classList.add("display_none");
+
+
+        }
+    </script>
+</body>
+</html>

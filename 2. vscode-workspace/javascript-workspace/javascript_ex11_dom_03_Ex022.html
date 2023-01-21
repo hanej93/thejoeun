@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>무지개 버튼</title>
+    <style>
+        .f_red {
+            background: linear-gradient(to left, orange 25%, red 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_org {
+            background: linear-gradient(to left, yellow 25%, orange 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_yel {
+            background: linear-gradient(to left, rgb(19, 195, 19) 25%, yellow 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_gre {
+            background: linear-gradient(to left, rgb(51, 115, 167) 25%,  rgb(19, 195, 19) 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_blu {
+            background: linear-gradient(to left, navy 25%,  rgb(51, 115, 167) 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_nav {
+            background: linear-gradient(to left, rgb(172, 11, 212) 25%,  navy 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+        .f_vio {
+            background: linear-gradient(to left, rgb(250, 2, 147) 25%,  rgb(172, 11, 212) 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+
+        span{
+            width: 100%;
+            height: 100%;
+            display: block;
+            font-size: 50px;
+            font-weight: bold;
+            margin-top: calc(100% - 220px);
+        }
+
+        button {
+            width: 400px;
+            height: 400px;
+            border-radius: 15%;
+            border-color: wheat;
+            position: absolute;
+            background: linear-gradient(to bottom right,wheat, white);
+            margin: auto;
+            left:0;
+            right:0;
+            top: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .bStyle{
+            background: linear-gradient(to right,red 25%, orange, yellow, rgb(19, 195, 19), 
+            rgb(51, 115, 167), navy, rgb(172, 11, 212), rgb(250, 2, 147) 75%);
+            -webkit-background-clip: text !important;
+            color: transparent; 
+        }
+
+        .bStyle:hover{
+            background: linear-gradient(to left,red 25%, orange, yellow, rgb(19, 195, 19), 
+            rgb(51, 115, 167), navy, rgb(172, 11, 212), rgb(250, 2, 147) 75%);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <button><span class="bStyle"  onclick="chButton()">Contents</span></button>
+
+    <script>
+        let color_count = 0;
+        function chButton() {
+            let bt = document.getElementsByTagName("span")[0];
+
+            if (color_count == 0) {
+                bt.className = "f_red";
+            } else if (color_count == 1) {
+                bt.className = "f_org";
+            } else if (color_count == 2) {
+                bt.className = "f_yel";
+            } else if (color_count == 3) {
+                bt.className = "f_gre";
+            } else if (color_count == 4) {
+                bt.className = "f_blu";
+            } else if (color_count == 5) {
+                bt.className = "f_nav";
+            } else if(color_count == 6){
+                bt.className = "f_vio";
+                color_count = -1;
+            }
+            color_count++;
+        }
+    </script>
+
+</body>
+
+</html>

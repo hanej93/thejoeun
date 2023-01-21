@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" cokdevice-width, initial-scale=1.0">
+    <title>이미지 슬라이딩</title>
+    <script src="../jquery-3.6.0.js"></script>
+</head>
+<style>
+    /* 전체 css 초기화 */
+    * {
+        margin: 0;
+        text-decoration: none;
+    }
+
+    /* 이미지 틀 */
+    .myframe {
+        width: 320px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* 버튼 */
+    div.myframe>a {
+        /* 버튼 위치 */
+        position: absolute;
+        top: 40%;
+        left: 20px;
+
+        /* 버튼 모양 */
+        background-color: gray;
+        width: 50px;
+        height: 40px;
+        border-radius: 25%;
+
+        /* 버튼 텍스트 */
+        color: turquoise;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    /* 다음 버튼의 위치를 조정 */
+    div.myframe>a:last-child {
+        left: 250px;
+    }
+</style>
+<script>
+    $(function(){
+        // bimg01 -> bimg02 -> bimg03 ... -> bimg10
+        var cnt = 1; // 이미지명을 표현할 수 있도록 변수를 생성
+        
+        // 다음버튼
+        $("div.myframe>a").click(function(){
+            
+            
+            if($(this).text() == '다음'){
+                if(cnt == 10){
+                    cnt = 1;
+                } else {
+                    cnt++;
+                }
+                    
+                if(cnt < 10){
+                    cnt = "0" + cnt;
+                }
+                $(".myframe>img").attr('src',"../images/images/bimg"+cnt+".jpg");
+            } else {
+                if(cnt == 1){
+                    cnt = 10;
+                } else {
+                    cnt--;
+                }
+
+                if(cnt < 10){
+                    cnt = "0" + cnt;
+                }
+
+                $(".myframe>img").attr('src',"../images/images/bimg"+cnt+".jpg");
+            }
+        });
+    });
+</script>
+
+<body>
+    <div class="myframe">
+        <img src="../images/images/bimg01.jpg" alt="">
+        <a href="#">이전</a>
+        <a href="#">다음</a>
+    </div>
+</body>
+
+</html>

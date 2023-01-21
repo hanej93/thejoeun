@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>내용변경하기</title>
+</head>
+<body>
+    <h1>내용변경 실습</h1>
+    <button onclick="changeWeek00()">토요일 바꾸기</button>
+    <button onclick="changeWeek01()">일요일 바꾸기</button>
+    <button onclick="changeWeek02()">모두 바꾸기</button>
+    <ul>
+        <li>월요일</li>
+        <li>화요일</li>
+        <li>수요일</li>
+        <li>목요일</li>
+        <li>금요일</li>
+        <li>토요일</li>
+        <li>일요일</li>
+    </ul>
+
+    <script>
+ 
+        function changeWeek00(){
+            // 버튼을 클릭했을 때 토요일을 금요일로 변경되도록 구현
+            document.getElementsByTagName("ul")[0].lastElementChild.innerText = "금요일";
+            alert("토요일을 금요일로 변경!");
+        }
+        function changeWeek01(){
+            // 버튼을 클릭했을 때 일요일을 금요일로 변경되도록 구현
+            document.getElementsByTagName("ul")[0].lastElementChild.previousElementSibling.innerText = "금요일";
+            alert("일요일을 금요일로 변경!");
+        }
+        function changeWeek02(){
+            // 버튼을 클릭했을 때 모든 요일을 토요일로 변경되도록 구현
+            const length = document.getElementsByTagName("ul")[0].childElementCount;
+            for (let i = 0; i < length; i++) {
+                document.getElementsByTagName("li")[i].innerText = "토요일";
+            }
+            alert("모든 요일 토요일로 변경!");
+            console.log(document.getElementsByTagName("li"));
+            console.dir(document.getElementsByTagName("li"));
+        }
+    </script>
+</body>
+</html>

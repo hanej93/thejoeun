@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button>연월일시분초 표기</button>
+    <p></p>
+
+    <script>
+        var bt = document.querySelector("button");
+        bt.onclick = function () {
+            setInterval(() => {
+                var d = new Date();
+                var str = d.getFullYear() + "년 ";
+                var month = d.getMonth()+1 < 10 ? "0" + (d.getMonth()+1) : (d.getMonth()+1);
+                var date = d.getDate() < 10 ? "0" +d.getDate() : d.getDate();
+                var hour = d.getHours() < 10 ? "0" +d.getHours() : d.getHours();
+                var min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+                var sec = d.getSeconds() < 10 ? "0" +d.getSeconds() : d.getSeconds();
+                var ms = d.getMilliseconds() < 100 ? d.getMilliseconds() < 10 ? "00" + d.getMilliseconds() : "0" + d.getMilliseconds() : d.getMilliseconds();
+
+                str += month +"월 ";
+                str += date +"일 	&nbsp;&nbsp;&nbsp;";
+                str += hour +"시 ";
+                str += min +"분 ";
+                str += sec +".";
+                str += ms + "초"
+                document.querySelector("p").innerHTML = str;
+                
+            }, 1);
+        }
+    </script>
+
+    <hr>
+    <input type="text" name="personId" placeholder="주민번호 입력">
+    <button id = "idBt">주민번호 체크</button>
+    <p>정상적인 주민번호가 아닌가</p>
+    <script>
+        // 주민번호 : ㄱㄴㄷㅇㄹㅁ-ㅅㅇㅈㅊㅋㅌㅍ
+        // 곱하기     2 3 4 5 6 7  8 9 2 3 4 5
+        // ㄱ*2 + ㄴ*3 .... ㅋ*4+ ㅌ*5 = 총합: 000
+        // 000/11 -> 나머지
+        // 11에서 나머지를 뺌
+        // 남은 값에서 일의 자리를 구함
+        // 일의자리 값이 ㅍ과 같으면 정상적인 주민번호
+        
+        var idBt = document.querySelector("#idBt");
+        idBt.onclick = function () {
+            var strId = document.getElementsByName("personId")[0].value;
+            console.log("확인할 주민번호",strId);
+            const myRegExp = /^\d{6}-\d{7}$/;
+            if(!myRegExp.test(strId)){
+                idBt.nextElementSibling.innerHTML = "'000000-0000000'의 형태로 입력바랍니다."
+                return;
+            }
+
+            var strArr = strId.split("-");
+            
+            var strId = strArr.join("");
+            console.log("'-'제거하고 합치기",strId);
+
+            var mulNum = [2,3,4,5,6,7,8,9,2,3,4,5];
+            var totNum = 0;
+            for(let i = 0 ; i < mulNum.length ; i++){
+                totNum += mulNum[i] * strId[i];
+            }
+            console.log(totNum);
+            console.log(totNum%11);
+            console.log(11-totNum%11);
+            console.log(strId[strId.length-1]);
+            if((11 - (totNum % 11)) == strId[strId.length-1]){
+                idBt.nextElementSibling.innerHTML = "정상적인 주민번호입니다."
+            } else{
+                idBt.nextElementSibling.innerHTML = "잘못된 주민번호입니다."
+            }
+        };
+
+        
+
+    </script>
+
+   
+</body>
+</html>

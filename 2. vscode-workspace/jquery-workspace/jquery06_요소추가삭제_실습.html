@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>동적 테이블 생성</title>
+    <script src="../jquery-3.6.0.js"></script>
+
+    <style>
+        /* table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        th {
+            background-color: gray;
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+        } */
+    </style>
+
+    <script>
+        $(function () {
+
+            var hr = $("<hr>");
+            var hr2 = $("<hr>");
+            $("input[value='테이블 생성']").click(function () {
+
+                var table = $("table");
+                table.before(hr);
+                table.after(hr2);
+                $("table").children().remove();
+
+                var rowCnt = $("input[name='row']").val();
+                var colCnt = $("input[name='column']").val();
+
+                var tr = $("<tr>");
+                for (let col = 1; col <= colCnt; col++) {
+                    let th = $("<th>").text("항목" + col);
+                    tr.append(th);
+                }
+                table.append(tr);
+
+                for (let row = 1; row <= rowCnt; row++) {
+                    let tr = $("<tr>");
+                    for (let col = 1; col <= colCnt; col++) {
+                        let td = $("<td>").text(row + "," + col);
+                        tr.append(td);
+                    }
+                    table.append(tr);
+                }
+                
+                $("table").css({
+                    "border": "1px solid black",
+                    "border-collapse": "collapse",
+                    "position": "relative",
+                    "left": "50%",
+                    "transform": "translateX(-50%)"
+                });
+                $("th").css({
+                    "background-color": "gray",
+                    "border": "1px solid black"
+                });
+                $("td").css({
+                    "border": "1px solid black"
+                });
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <h1>동적 테이블 생성</h1>
+        <input type="text" name="row" id="">행
+        <input type="text" name="column" id="">열
+        <input type="button" value="테이블 생성">
+
+        <table></table>
+
+    </form>
+</body>
+
+</html>

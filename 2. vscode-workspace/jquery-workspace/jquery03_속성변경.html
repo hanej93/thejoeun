@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 변경</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>객체 속성 변경</h1>
+    <dl>
+        <dt>class속성 변경</dt>
+        <dd>
+            <ul>
+                <li>추가: addClass("클래스명")</li>
+                <li>삭제: removeClass("클래스명")</li>
+                <li>토글: toggleClass("클래스명")</li>
+            </ul>
+        </dd>
+        <dt>value속성 변경</dt>
+        <dd>
+            <ul>
+                <li>가져오기: val()</li>
+                <li>값 변경: val("변경할 값")</li>
+            </ul>
+        </dd>
+        <dt>style속성 변경</dt>
+        <dd>
+            <ul>
+                <li>스타일가져오기: css("css속성명")</li>
+                <li>스타일변경: css("css속성명","값")</li>
+            </ul>
+        </dd>
+        <dt>기타속성 변경</dt>
+        <dd>
+            <ul>
+                <li>가져오기: attr("속성명")</li>
+                <li>수정: attr("속성명","변경할 값")</li>
+                <li>가져오기: prop("속성명)</li>
+                <li>수정: prop("속성명", true/false)</li>
+            </ul>
+        </dd>
+    </dl>
+    <div id="ex01"></div>
+    <div class="ex02"></div>
+    <input type="text" value="텍스트값"><br>
+    <a href="https://www.naver.com">네이버</a><br>
+    <input type="checkbox" value="1">
+    <script>
+        $(function () {
+            // id가 ex01인 아이를 넓이가 200px로 변경하고 class를 ex02를 추가
+            // class가 ex02인 아이를 배경색을 파랑으로 변경
+            // input의 value를 콘솔에 출력하고, "변경된 값"으로 변경
+            // 네이버 href링크주소를 다음으로 변경
+            // 체크박스가 선택되어있는지 아닌지 판단하여 체크되어있으면 "예"를
+            // 콘솔에 출력하고 체크되어있지 않으면 "아니오"를 콘솔에 출력
+
+            // id가 ex01인 아이를 넓이가 200px로 변경하고 class를 ex02를 추가
+            var idEx01 = $("#ex01");
+            idEx01.css("width", "200px");
+            idEx01.addClass("ex02");
+
+            // class가 ex02인 아이를 배경색을 파랑으로 변경
+            $(".ex02").css("background-color", "blue");
+
+            // input의 value를 콘솔에 출력하고, "변경된 값"으로 변경
+            console.log($("input[type=text]").val());
+            $("input[type=text]").val("변경된 값")
+            console.log($("input[type=text]").val());
+
+            // 네이버 href링크주소를 다음으로 변경
+            $("a").attr("href", "https://www.daum.net");
+            $("a").html("다음");
+            
+            // 체크박스가 선택되어있는지 아닌지 판단하여 체크되어있으면 "예"를
+            // 콘솔에 출력하고 체크되어있지 않으면 "아니오"를 콘솔에 출력
+            $("input[type=checkBox]").click(function() {
+                var isChecked = $(this).prop("checked");
+                if (isChecked) {
+                    console.log('예');
+                } else {
+                    console.log('아니오');
+                }
+            });
+
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

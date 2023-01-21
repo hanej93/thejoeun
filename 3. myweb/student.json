@@ -1,0 +1,11 @@
+[
+    {"myClass01" :[{"name":"미영","kor":70,"eng":70,"math":75},
+        {"name":"연화","kor":80,"eng":70,"math":75},
+        {"name":"은정","kor":65,"eng":80,"math":80}]},
+    {"myClass02" :[{"name":"준우","kor":80,"eng":70,"math":80},
+        {"name":"예준","kor":80,"eng":75,"math":85},
+        {"name":"지후","kor":85,"eng":80,"math":70}]},
+    {"myClass03" :[{"name":"민준","kor":70,"eng":80,"math":85},
+        {"name":"도윤","kor":70,"eng":75,"math":80},
+        {"name":"서준","kor":80,"eng":75,"math":80}]}
+]

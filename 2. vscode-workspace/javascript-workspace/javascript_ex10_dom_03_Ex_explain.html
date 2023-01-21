@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .red {
+        color: red;
+    }
+
+    .orange {
+        color: orange;
+    }
+
+    .yellow {
+        color: yellow;
+    }
+
+    .green {
+        color: green;
+    }
+
+    .blue {
+        color: blue;
+    }
+
+    .navy {
+        color: navy;
+    }
+
+    .purple {
+        color: purple;
+    }
+</style>
+
+<body>
+    <h1>마법의 글자</h1>
+    <button onclick="chFont()">색바꾸기</button>
+
+    <script>
+        var i = 0;
+
+        function chFont() {
+            var h1 = document.querySelector("h1");
+            if (i == 0) {
+                h1.className = "red";
+                i++;
+            } else if (i == 1) {
+                h1.className = "orange";
+                i++;
+            } else if (i == 2) {
+                h1.className = "yellow";
+                i++;
+            } else if (i == 3) {
+                h1.className = "green";
+                i++;
+            } else if (i == 4) {
+                h1.className = "blue";
+                i++;
+            } else if (i == 5) {
+                h1.className = "navy";
+                i++;
+            } else if (i == 6) {
+                h1.className = "purple";
+                i = 0;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

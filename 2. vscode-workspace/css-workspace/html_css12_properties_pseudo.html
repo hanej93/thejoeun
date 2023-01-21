@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo</title>
+
+    <style>
+        p.ex01::first-line {
+            color: red;
+        }
+
+        p.ex02::before {
+            content: url(images/images/ic_arrow_a.gif);
+        }
+
+        p.ex03::selection {
+            background-color: gray;
+            color: hotpink;
+        }
+
+        p.ex04:hover {
+            color: blueviolet;
+            font-size: 50px;
+        }
+
+        div img {
+            display: none;
+        }
+
+        div:hover img {
+            display: block;
+        }
+
+        div:hover p {
+            display: none;
+        }
+
+        #checked_border_red:focus {
+            border: 5px solid red;
+        }
+
+        #checked_size_50px:checked {
+            height: 50px;
+            width: 50px;
+        }
+
+        /* 몇번째 아이 */
+        ol li:first-child{
+            color: red;
+        }
+        ol li:last-child{
+            font-weight: bold;
+        }
+        ol li:nth-child(2n+1){
+            background-color: yellow;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h1>psuedo-element</h1>
+    <p class="ex01">
+        첫 줄을 선택하는 아이 ::first-line<br>
+        두번 째 줄!!!<br>
+    </p>
+
+    <p class="ex02">
+        태그의 앞쪽에 어떤 내용을 추가하는 아이 ::before<br>
+    </p>
+    <p class="ex03">
+        선택된(드래그해서 선택한 내용) 부분을 선택하는 아이 ::selection<br>
+    </p>
+
+    <hr>
+
+    <h1>psuedo-classes</h1>
+    <p class="ex04">
+        마우스를 올렸을 때와 마우스를 요소밖으로 뺐을 때 :hover<br>
+    </p>
+
+    <!-- 
+        마우스를 올려주세요! 박스를 하나 만들고
+        마우스를 올렸을 때 이미지가 보이도록 구현해보시오!
+    -->
+
+    <div>
+        <p>마우스를 올려주세요!</p>
+        <img src="images/images/hi.png" alt="" width="300px" height="500px">
+    </div>
+
+    <hr>
+
+    <ul>
+        <li>:checked - 체크박스같은 애들이 체크된 상태일 때</li>
+        <li>:focus - 인풋의 커서가 활성화 되어있을 때</li>
+    </ul>
+
+    <!-- 
+        form 을 만들어 input 태그에 focus가 되면 테두리를 빨강색으로 2px이 되게 바꾸시오.
+        체크박스와 라디오 박스도 만들어서 선택되면 크기가 50px이 되게 만드세요.
+     -->
+    <hr>
+
+    <form action="post">
+        <input type="text" name="" id="checked_border_red">
+        <br>
+        <fieldset>
+            <legend>성별</legend>
+            <label><input type="checkbox" name="pseudo_checkbox" id="checked_size_50px" value="남">남</label>
+            <label><input type="checkbox" name="pseudo_checkbox" id="checked_size_50px" value="여">여</label>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>번호</legend>
+            <label><input type="radio" name="pseudo_radio" id="checked_size_50px" value="1번">1번</label>
+            <label><input type="radio" name="pseudo_radio" id="checked_size_50px" value="2번">2번</label>
+            <label><input type="radio" name="pseudo_radio" id="checked_size_50px" value="3번">3번</label>
+        </fieldset>
+    </form>
+
+    <hr>
+    <ol>
+        <li>1번</li>
+        <li>2번</li>
+        <li>3번</li>
+        <li>4번</li>
+        <li>5번</li>
+        <li>6번</li>
+        <li>7번</li>
+    </ol>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>javascript, 적용방법</title>
+    <script src="javascript_ex01.js"></script>
+</head>
+
+<body>
+    <h1>자바스크립트란?</h1>
+    <dl>
+        <dt>자바스크립트</dt>
+        <dd>
+            - 스크립트언어: 어플리케이션(다른 소프트웨어)을 제어하기 위한 언어<br>
+            - 인터프리터 언어: 컴파일을 하지 않고 한 줄씩 해석해서 실행하는 언어<br>
+            - 동적 타이핑(Typing-자료형) : 변수가 실행되면서 자료형이 정해짐<br>
+            - 함수형 프로그래밍 언어 : 함수형태로 구현해서 사용하는 언어<br>
+        </dd>
+        <dt>적용 방법</dt>
+        <dd>
+            <ol>
+                <li>인라인방식</li>
+                <ul>
+                    <li>태그 안쪽에 넣는 방법</li>
+                    <li>이벤트 속성과 같이 쓴다</li>
+                    <li onclick="alert('경고창')">클릭 시 alert를 발생</li>
+                </ul>
+                <li>내부스크립트 방식</li>
+                <ul>
+                    <li>문서 안쪽에 script 태그안에 넣어쓰는 방식</li>
+                    <li onclick="my_click()">클릭 시 alert를 발생</li>
+                    <script>
+                        function my_click() {
+                            alert("내부 방식 경고창!");
+                        }
+                    </script>
+                </ul>
+                <li>외부스크립트 방식
+                    <ul>
+                        <li>파일을 외부에 만드는 방식</li>
+                        <li>확장자가 .js인 파일로 따로 만들어 가져와 씀</li>
+                        <li onclick="my_sec_click()">클릭 시 alert를 발생</li>
+                    </ul>
+                </li>
+            </ol>
+        </dd>
+        <dt>자바스크립트 문법</dt>
+        <dd>
+            <ul>
+                <li>한줄 단위로 문장이 끝난다.</li>
+                <li>세미콜론(;)으로 끝낼 수 있다.</li>
+                <li>블록 : 중괄호({)</li>
+                <li>지역변수는 function단위로만 나뉜다</li>
+                <li>주석 : //내용 , /* 내용 */</li>
+            </ul>
+        </dd>
+    </dl>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소추가삭제</title>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            $("button").click(function(){
+                $("#ex01").html("<li>첫째</li>");
+                
+                //li객체 생성
+                var li = $("<li>");
+                //li 안쪽에 텍스트를 추가
+                li.text("둘째");
+                $("#ex01").append(li);
+
+                var li_03 = "<li>셋째</li>";
+                var li_04 = $("<li></li>").text("넷째");
+                var li_05 = document.createElement("li");
+                li_05.innerText = "다섯째";
+
+                $("#ex01").append(li_03, li_04, li_05);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h1>요소를 추가 삭제</h1>
+    <dl>
+        <dt>jquery객체.html()</dt>
+        <dd>요소 안쪽의 html부분을 반환하거나 변경할 때 쓰임</dd>
+        <dt>jquery객체.text()</dt>
+        <dd>요소 안쪽의 text만 가져오가나, 변경할 때</dd>
+        <dt>jquery객체.append("추가할요소"), jquery객체.prepend("추가할요소")</dt>
+        <dd>요소의 자식에 추가할 때</dd>
+        <dt>jquery객체.after("요소"), jquery객체.before("요소")</dt>
+        <dd>요소 앞또는 뒤에 추가할 때</dd>
+        <dt>jquery객체.remove()</dt>
+        <dd>요소를 제거할 때</dd>
+    </dl>
+
+    <ul id="ex01"></ul>
+    <button>눌러!</button>
+</body>
+</html>

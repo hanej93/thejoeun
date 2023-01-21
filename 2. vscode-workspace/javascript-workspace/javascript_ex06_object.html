@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object</title>
+</head>
+<body>
+    <h1>object</h1>
+    <dl>
+        <dt>객체타입</dt>
+        <dd>
+            서로 다른 자료형의 묶음<br>
+        </dd>
+        <dt>형식</dt>
+        <dd>
+            중괄호로 감싸서 만든다.<br>
+            콜론을 기준으로 키와 값의 쌍으로 이루어짐<br>
+            {키1:값1, 키2:값2, 키3:값3..}<br>
+        </dd>
+        <dt>만드는 방법</dt>
+        <dd>
+            var myObject = new Object(); <br>
+            var myObject = {"name":"손오공","age":100};<br>
+        </dd>
+        <dt>사용 방법</dt>
+        <dd>
+            myObject.name = "손오반";<br>
+            myObject.age = 50;<br>
+            <br>
+            필드가 추가될 수 있음..<br>
+            myObject.phone = "010-9999-9999";
+        </dd>
+    </dl>
+    <script>
+        var person = {};
+        person.name = "기영이";
+        person.age = 10;
+        person.phone = ["삼성","엘지","애플"];
+
+        
+        console.log("이름: " + person.name);
+        console.log("나이: " + person["age"]); // 배열 형식으로도 접근 가능하다
+        console.log("폰: ", person.phone[0],person["phone"][1] ,person.phone[2]);
+
+        // employee(이름, 사번, 연봉) 객체 3개를 만들어서
+        // 각각의 이름 사번 연봉을 출력하고
+        // 연봉의 평균을 구하여 출력
+        /*
+        var employeeArray = []
+        for (let i = 0; i < 3; i++) {
+            employeeArray[i] = new Object();
+        }
+        employeeArray[0].name = "루피";
+        employeeArray[0].num = 10001;
+        employeeArray[0].salary = 4000;
+
+        employeeArray[1].name = "조로";
+        employeeArray[1].num = 10002;
+        employeeArray[1].salary = 5000;
+
+        employeeArray[2].name = "상디";
+        employeeArray[2].num = 10003;
+        employeeArray[2].salary = 3500;
+        console.log("");
+        console.log("");
+        var sumSalary = 0;
+        for (let i = 0; i < 3; i++) {
+            console.log("이름: " + employeeArray[i].name);
+            console.log("사번: " + employeeArray[i].num);
+            console.log("연봉: " + employeeArray[i].salary);
+            console.log("");
+            sumSalary += employeeArray[i].salary;
+        }
+        console.log("연봉 평균: " ,(sumSalary/employeeArray.length));
+        */
+       function Employee(name,id){
+           this.name = name;
+           this.id = id;
+           this.salary;
+       }
+       var empArray = [];
+       empArray[0] = new Employee("둘리",10000);
+       empArray[1] = new Employee("또치",20000);
+       empArray[2] = new Employee("도우너",30000);
+
+       empArray[0].salary = 2000;
+       empArray[1].salary = 3000;
+       empArray[2].salary = 4000;
+
+       // 자바의 for-each와 같은 형식!
+       var sum = 0;
+       for(var e of empArray){
+            console.log(e.name, e.id, e.salary);
+            sum += e.salary;
+       }
+       console.log(sum/empArray.length);
+
+    </script>
+</body>
+</html>

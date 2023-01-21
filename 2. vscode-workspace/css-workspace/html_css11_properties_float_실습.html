@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float 실습</title>
+    <style>
+        div{
+            border: 1px solid black;
+        }
+        div>img.right{
+            float: right;
+            width: 200px;
+            height: 200px;
+        }
+        div>img.left{
+            float: left;
+            width: 200px;
+            height: 200px;
+        }
+        div.clear{
+            clear: both;
+            border-width: 0px;
+        }
+        .leftfloat{
+            float: left;
+        }
+        .rightfloat{
+            float: right;
+        }
+        section::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <img class="right" src="images/images/hi.png" alt="">
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이
+        <div class="clear"></div>
+    </div>
+    <div>
+        <img class="left" src="images/images/hi.png" alt="">
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이 
+        하이 하이 하이 하이 하이 하이 하이 하이 하이
+        <div class="clear"></div>
+    </div>
+
+    <hr>
+
+    <section>
+        <img class="leftfloat"src="images/images/car1.jpg" alt="">
+        <img class="leftfloat" src="images/images/car2.jpg" alt="">
+    </section>
+
+</body>
+</html>

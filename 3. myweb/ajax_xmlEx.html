@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>마블 영화</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            position: relative;
+            margin: 0px auto;
+
+        }
+
+        th,
+        tr,
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+
+        th {
+            background-color: gray;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            document.querySelector("button").onclick = function () {
+                var xhr = new XMLHttpRequest();
+
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        var data = xhr.responseXML;
+                        var movies = data.querySelectorAll("movie");
+
+                        var table = document.createElement("table");
+
+                        var thTr = document.createElement("tr");
+                        var th1 = document.createElement("th");
+                        th1.innerText = "year";
+                        var th2 = document.createElement("th");
+                        th2.innerText = "title";
+                        thTr.append(th1, th2);
+                        table.append(thTr);
+                        for (let i = 0; i < movies.length; i++) {
+                            var rowspanCnt = 1;
+                            var tr = document.createElement("tr");
+                            var year = document.createElement("td");
+                            year.innerHTML = movies[i].children[0].innerHTML;
+                            var korTitle = document.createElement("td");
+                            korTitle.innerHTML = movies[i].children[1].innerHTML + "<br>" + movies[i]
+                                .children[2].innerHTML;
+
+                            tr.append(year, korTitle);
+                            table.append(tr);
+                        }
+                        document.querySelector("button").after(table);
+
+                    }
+                }
+
+                xhr.open("get", "http://localhost:8080/myweb/marvel_movie.xml", true);
+                xhr.send();
+            }
+
+
+        });
+    </script>
+</head>
+
+
+<body>
+
+    <button>마블 테이블 생성!</button>
+
+</body>
+
+</html>

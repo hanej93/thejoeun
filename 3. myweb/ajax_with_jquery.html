@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>데이터 가져오기</title>
+    <script>
+        // $.ajax(url,[setting])
+        // $.ajax({key: value ....}
+        // 예시) $.ajax({url : url주소, success:  ....})
+
+        /*
+            << ajax 메서드에서 사용되는 속성들 >>
+            url : 요청이 보내지는 곳
+            data : 서버로 보낼 데이터
+            type : 메서드 종류(post, get..)
+            dataType : 받을 데이터의 종류(html, xml, text, json ... ) -> JSON으로 받으면 JSON객체로 전달해준다.
+            success : 성공했을 때 실행할 함수(function)
+            error : 실패했을 때 실행할 함수
+            timeOut : 응답을 기다리는 시간
+            async : 비동기여부
+        */
+        $(function () {
+            $("#get_xml").click(function () {
+                $.ajax({
+                    url : "http://localhost:8080/myw/data.xml",
+                    dataType : "xml",
+                    success : function(result){
+                        console.log(result);
+                    },
+                    error : function(e){
+                        console.log(e);
+                    }
+                });
+            });
+
+            $("#get_json").click(function () {
+                $.ajax({
+                    url : "http://localhost:8080/myw/data.json",
+                    dataType : "json",
+                    success : function(result){
+                        console.log(result);
+                    },
+                    error : function(e){
+                        console.log(e);
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>jquery로 데이터 가져오기</h1>
+    <button id="get_xml">xml 데이터 가져오기</button>
+    <button id="get_json">json 데이터 가져오기</button>
+    <button id="get_json">json 데이터 가져오기</button>
+</body>
+
+</html>

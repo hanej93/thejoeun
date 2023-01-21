@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<product>
+    <item>
+        <name>맥심커피</name>
+        <price>4000</price>
+    </item>
+    <item>
+        <name>콜라</name>
+        <price>3200</price>
+    </item>
+    <item>
+        <name>우유</name>
+        <price>2000</price>
+    </item>
+    <item>
+        <name>라면</name>
+        <price>800</price>
+    </item>
+    <item>
+        <name>옥수수아몬드</name>
+        <price>1100</price>
+    </item>
+</product>
