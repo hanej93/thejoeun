@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- 필요한 객체를 빈으로 등록 -->
+	<bean class="spring03.aop.ex02.Boy" id="boy"/>
+	<bean class="spring03.aop.ex02.Girl" id="girl"/>
+	<bean class="spring03.aop.ex02.Robot" id="robot"></bean>
+
+	<!-- 공통 관심사항으로 쓸 객체도 빈으로 등록 -->
+	<bean class="spring03.aop.ex02.MyAspect" id="myAspect"/>
+	
+	
+	<!-- aspect로 등록을 따로 해줘야 한다 -->
+	<aop:config>
+		<aop:aspect ref="myAspect">
+			<!-- 핵심기능의 언제 공통 관심사항을 붙일꺼냐를 설정 -->
+			<aop:pointcut expression="execution(public String *.doSomething())" id="myPt"/>
+			<!-- 어느 타임에 실행할꺼냐 / 설정이전, 이후, 정상종료, 예외 -->
+			
+			<!-- 메서드가 실행되기 전 -->
+			<aop:before method="beforeDoSomething" pointcut-ref="myPt"/>
+			
+			<!-- 메서드가 실행된 이후 -->
+			<aop:after method="afterDoSomething" pointcut-ref="myPt"/>
+			
+			<!-- 리턴 이후 -->
+			<aop:after-returning method="afterReturn" returning="msg" pointcut-ref="myPt"/>
+			
+			<!-- 예외가 발생하고 나서 -->
+			<aop:after-throwing method="afterThrowing" throwing="th" pointcut-ref="myPt"/>
+			
+			<!-- 핵심기능을 둘러싼다. -->
+			<aop:around method="myAround" pointcut="execution(public String *.fight())"/>
+															
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 단독으로 xml 맵퍼를 쓸때는 이름이 상관없었지만
+	 .java 맵퍼와 연동을 할때는 "패키지명.클래스명" 으로 써줌
+ -->
+<mapper namespace="person.PersonMapper">
+
+	<!-- 네임스페이스에 있는 클래스안의 구현할 메소드 이름을 맵핑해줌 -->
+	<select id="selectPersonList" resultType="Person">
+		select * from person
+	</select>
+</mapper>

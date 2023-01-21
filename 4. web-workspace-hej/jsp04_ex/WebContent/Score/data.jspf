@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	int kor=0,eng=0,math=0,app=0,le=0;
+	int avg=0, tot=0;
+	String name = request.getParameter("name");
+	try {
+		kor = Integer.parseInt(request.getParameter("kor"));
+		eng = Integer.parseInt(request.getParameter("eng"));
+		math = Integer.parseInt(request.getParameter("math"));
+		app = Integer.parseInt(request.getParameter("app"));
+		le = Integer.parseInt(request.getParameter("le"));
+		tot = kor+eng+math+app+le;
+		avg = tot/5;
+	} catch (Exception e) {
+		System.out.println("정보 에러");
+	}
+	
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- 
+		DriverManagerDateSource
+		:  DB와 스프링을 커넥시켜줌
+	-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://Localhost:3306/tj_b?serverTimezone=Asia/Seoul&amp;characterEncoding=utf-8"/>
+		<property name="username" value="root"/>
+		<property name="password" value="mysql"/>
+	</bean>
+	
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 위에서 디비를 연결한 접속정보를 마이바티스와 연결해줌 -->
+		<property name="dataSource" ref="dataSource"/>
+		
+		<!-- mybatis설정을 하는 경로를 지정 -->
+		<property name="configLocation" value="spring04_mybatis_ex/mybatisConfig.xml"/>
+		
+		<!-- mapper의 경로를 지정  -->
+		<property name="mapperLocations">
+			<list>
+				<value>spring04_mybatis_ex/userMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+
+</beans>

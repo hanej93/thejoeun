@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- 어노테이션 방식으로 bean을 등록하자 -->	
+	<!-- annotation을 자바 클래스 위에 표시한 아이들을 스캔해서 찾아와 빈으로 등록한다. -->
+	
+	<!-- bean으로 스캔할 패키지를 넣어준다. 
+		base-package -> 여기서 부터 찾아가겠다.
+	-->
+	<context:component-scan base-package="mySpring.ex04"/>
+	
+	
+</beans>

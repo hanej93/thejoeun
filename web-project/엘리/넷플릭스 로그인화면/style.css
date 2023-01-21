@@ -1,0 +1,302 @@
+
+    :root {
+        /* 색상 정의 */
+        --white-color: #ffffff;
+        --grey-dark-color: #333333;
+        --grey-light-color: #8c8c8c;
+        --red-color: #e50914;
+        --blue-color: #0160dd;
+        --orange-color: #e87c03;
+    }
+
+    body,
+    html {
+        height: 150vh;;
+        word-break: keep-all;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-decoration: none;
+    }
+    a:hover, a:active {
+        text-decoration: underline;
+    }
+    a:visited{
+        color: var(--grey-light-color);
+    }
+
+
+
+    /* 백그라운드 */
+    .background {
+        background: url("https://assets.nflxext.com/ffe/siteui/vlv3/8dc3f88b-a96a-4d8a-af9a-a69e6f3b2506/90e21100-d9df-4860-9263-1535e93f230e/KR-ko-20210524-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        position: relative;
+
+    }
+
+    .background::before {
+        content: "";
+        background-color: rgb(0, 0, 0);
+        opacity: 0.5;
+
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+
+    }
+
+
+    /* 로고 이미지 */
+    .netflix_logo_img {
+        position: absolute;
+        width: 200px;
+        left: 2%;
+        top: 15px;
+    }
+
+    /* 로그인 컨테이너 */
+    .login_container {
+        width: 463px;
+        height: 650px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 100px;
+    }
+
+    .login_container::before {
+        content: "";
+        background-color: rgb(0, 0, 0);
+        opacity: 0.7;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: -1;
+        border-radius: 4px;
+    }
+
+    .login_container_in {
+        height: 70%;
+        padding: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .login_container_in>* {
+        width: 100%;
+        color: var(--grey-light-color);
+    }
+
+    .login_title {
+        color: var(--white-color);
+    }
+
+    .login_idpassword{
+        
+        display: flex;
+        height: 170px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .login_id input {
+        background-color: var(--grey-dark-color);
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        border-style: none;
+        border-bottom: 1px solid var(--orange-color);
+        color: var(--white-color);
+        font-size: 16px;
+    }
+
+    .login_id>div {
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--orange-color);
+    }
+
+    .login_password input {
+        background-color: var(--grey-dark-color);
+        width: 100%;
+        height: 50px;
+        border-radius: 4px;
+        border-style: none;
+        border-bottom: 1px solid var(--orange-color);
+        color: var(--white-color);
+        font-size: 16px;
+    }
+
+    .login_password>div {
+        margin-top: 8px;
+        font-size: 14px;
+        color: var(--orange-color);
+    }
+
+    .login_submit input {
+        width: 100%;
+        height: 50px;
+        color: var(--white-color);
+        background-color: var(--red-color);
+        border-style: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+
+    .login_info_bottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 150px;
+    }
+
+    .login_save_infohelp {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+    .login_save_info{
+        display: flex;
+    }
+    .login_save_info input{
+        margin: auto;
+        margin-right: 4px;
+        height:15px;
+        width: 15px;
+    }
+    
+    .facebook_login{
+        display: flex;
+        align-items: flex-start;
+        font-size: 14px;
+    }
+    .facebook_login i{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        top:10px;
+        color: white;
+        background-color: #415ca0;
+        font-size: 18px;
+        width: 18px;
+        height: 22px;
+        margin-right: 10px;
+        padding-right: 4px;
+    }
+    
+
+
+    .sign_up>a{
+        color: var(--white-color);
+    }
+
+    .human_check{
+        font-size: 13px;
+    }
+    .human_check>a{
+        color: var(--blue-color);
+    }
+
+    footer {
+        color: var(--grey-light-color);
+        font-size: 14px;
+        height: 400px;
+        width: 92%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-left: 8%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    footer::before{
+        content: "";
+        background-color: rgb(0, 0, 0);
+        opacity: 0.7;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: -1;
+        border-radius: 4px;
+    }
+
+
+    footer>div:nth-child(2){
+        height: 65px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-items: flex-start;
+        align-items: center;
+        align-content: space-around;
+    }
+    footer>div:nth-child(2) div{
+        flex: 0 1 25%;
+    }
+    footer>div:nth-child(3){
+        display: flex;
+        height: 60px;
+        width: 100%;
+        align-items: flex-end;
+    }
+    footer>div:nth-child(3) select{
+        
+        height: 50px;
+        width: 130px;
+        background-color: #030303;
+        color: var(--grey-light-color);
+        text-align-last: right;
+        padding-right: 30px;
+        appearance: none;
+    }
+    footer>div:nth-child(3)::after{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f078";
+        height: 50px;
+        font-size: 20px;
+        position: absolute;
+        pointer-events: none;
+        left: calc(8% + 105px);
+    }
+    footer>div:nth-child(3)::before{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f0ac";
+        height: 50px;
+        font-size: 20px;
+        position: absolute;
+        pointer-events: none;
+        left: calc(8% + 15px)
+    }
+
+    
+    footer>div:nth-child(4){
+        height: 100px;
+        font-size: 12px;
+    }
+
+

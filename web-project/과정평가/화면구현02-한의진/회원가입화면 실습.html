@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 화면</title>
+</head>
+<style>
+    #container {
+        width: 1100px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+    }
+
+    #sign_up_title {
+        font-weight: 1000;
+
+    }
+
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: inherit;
+    }
+
+    tr,
+    th {
+        border: 1px solid black;
+    }
+
+    td {
+        padding: 5px;
+    }
+
+    th {
+        text-align: left;
+        background-color: rgb(156, 189, 214);
+        padding-left: 10px;
+        color: white;
+    }
+
+    tr>td:first-child {
+        background-color: rgb(247, 255, 255);
+        width: 200px;
+    }
+
+    #table2 td {
+        font-weight: bold;
+        width: 20%;
+    }
+
+    .alarm_text {
+        color: red;
+    }
+
+    #password_hint,
+    #address_1,
+    #address_2 {
+        width: 500px;
+    }
+
+    #first_postNum,
+    #last_postNum {
+        width: 60px;
+    }
+
+    #confirm_div {
+        margin: 15px;
+    }
+
+    #confirm_div>input {
+        margin: 3px;
+    }
+</style>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector("#container");
+
+        form.onsubmit = function () {
+            function emptyAlarmText() {
+                var text = document.querySelectorAll(".alarm_text");
+                for (const t of text) {
+                    t.innerHTML = "";
+                }
+            }
+
+            emptyAlarmText();
+            var userId = document.querySelector("#userId").value.trim();
+            document.querySelector("#userId").value = userId;
+            console.log("유저아이디: ", userId);
+            if (userId.length < 5) {
+                document.querySelector("#userId_alarm").innerHTML = "  아이디를 5자이상 입력바랍니다!";
+                document.querySelector("#userId").focus();
+                return false;
+            }
+            
+            
+
+
+            var password = document.querySelector("#password").value.trim();
+            document.querySelector("#password").value = password
+            console.log("비밀번호: ", password);
+            if (password.length < 10) {
+                document.querySelector("#password_alarm").innerHTML = "  비밀번호를 10자이상 입력바랍니다!";
+                document.querySelector("#password").focus();
+                return false;
+            }
+           
+            
+            var speicalCharForm =  /[~!@#$%^&*()_+|<>?:{}]/;
+            if(!speicalCharForm.test(password)){
+                document.querySelector("#password_alarm").innerHTML = "  특수기호가 최소 한개이상 포함되어야 합니다!";
+                document.querySelector("#password").focus();
+                return false;
+            }
+          
+
+
+
+            var password_confirm = document.querySelector("#password_confirm").value.trim();
+            document.querySelector("#password_confirm").value = password_confirm;
+            console.log("비밀번호확인: ", password_confirm);
+            if (password != password_confirm) {
+                document.querySelector("#password_confirm_alarm").innerHTML = "  비밀번호가 다릅니다";
+                document.querySelector("#password_confirm").focus();
+                return false;
+            }
+            
+
+
+
+            var userName = document.querySelector("#userName").value.trim();
+            document.querySelector("#userName").value = userName;
+            console.log("이름: ", userName);
+            if (userName.length < 1) {
+                document.querySelector("#userName_alarm").innerHTML = "  이름을 입력바랍니다";
+                document.querySelector("#userName").focus();
+                return false;
+            }
+            
+
+
+
+            var userEmail = document.querySelector("#userEmail").value;
+            var emailForm =
+                /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+            console.log("이메일: ", userEmail);
+            if (!emailForm.test(userEmail)) {
+                document.querySelector("#userEmail_alarm").innerHTML = "  이메일 형식에 맞게 입력바랍니다.";
+                document.querySelector("#userEmail").focus();
+                return false;
+            }
+            
+
+
+
+
+
+            var first_resistNum = document.querySelector("#first_resistNum").value;
+            var last_resistNum = document.querySelector("#last_resistNum").value;
+
+
+            console.log("주번1: ", first_resistNum);
+            console.log("주번2: ", last_resistNum);
+            var resistNum = first_resistNum + last_resistNum;
+            var mulNum = [2, 3, 4, 5, 6, 7, 8, 9, 2, 3, 4, 5];
+            var totNum = 0;
+            console.log("주번: ", resistNum);
+            for (let i = 0; i < mulNum.length; i++) {
+                totNum += mulNum[i] * resistNum[i];
+            }
+            var lastNum = (11 - (totNum % 11));
+            if(lastNum == 10){
+                lastNum = 0;
+            }
+            if (lastNum != resistNum[resistNum.length - 1]) {
+                document.querySelector("#resistNum_alarm").innerHTML = "  정확한 주민등록번호를 입력바랍니다.";
+                document.querySelector("#first_resistNum").focus();
+                return false;
+            }
+            
+
+            var interestArr = document.container.interest_field;
+            var leastOneChecked = false;
+            console.log(interestArr);
+            for (const interest of interestArr) {
+                if (interest.checked) {
+                    leastOneChecked = true;
+                    break;
+                }
+            }
+            if (!leastOneChecked) {
+                alert("관심분야 최소 하나를 체크바랍니다.");
+                return false;
+            }
+
+        }
+
+
+    });
+</script>
+
+<body>
+    <form action="joinProc.html" id="container" name="container">
+
+        <p><img src="./images/images/ic_arrow_a.gif" alt=""><span id="sign_up_title">사항은 필수 입력 사항이므로 필히 입력하여
+                주십시오.</span>
+        </p>
+        <table id="table1">
+            <tr>
+                <th colspan="2">기본정보</th>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">회원 ID
+                </td>
+                <td>
+                    <input type="text" name="userId" id="userId"><span class="alarm_text" id="userId_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">프로필 사진
+                </td>
+                <td>
+                    <input type="file" name="profile_pic" id="profile_pic">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">비밀번호
+                </td>
+                <td>
+                    <input type="password" name="password" id="password"> <span class="alarm_text"
+                        id="password_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">비밀번호 재입력
+                </td>
+                <td>
+                    <input type="password" name="password_confirm" id="password_confirm"> <span class="alarm_text"
+                        id="password_confirm_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">비밀번호 힌트
+                </td>
+                <td>
+                    <input type="text" name="password_hint" id="password_hint">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">추천해준 친구 ID
+                </td>
+                <td>
+                    <input type="text" name="recommend_id" id="recommend_id">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">이름
+                </td>
+                <td>
+                    <input type="text" name="userName" id="userName" placeholder="한의진"> <span class="alarm_text"
+                        id="userName_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">이메일
+                </td>
+                <td>
+                    <input type="text" name="userEmail" id="userEmail" placeholder="mail@gmail.com 형식"> <span
+                        class="alarm_text" id="userEmail_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_a.gif" alt="">주민등록번호
+                </td>
+                <td>
+                    <input type="text" name="first_resistNum" id="first_resistNum" placeholder="000000">
+                    -
+                    <input type="password" name="last_resistNum" id="last_resistNum" placeholder="1234567">
+                    <span class="alarm_text" id="resistNum_alarm"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">생년월일
+                </td>
+                <td>
+                    <input type="date" name="user_birth" id="user_birth" min="1950-01-01" max="2021-05-26">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">우편번호
+                </td>
+                <td>
+                    <input type="text" name="first_postNum" id="first_postNum">
+                    -
+                    <input type="text" name="last_postNum" id="last_postNum">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">주소1
+                </td>
+                <td>
+                    <input type="text" name="address_1" id="address_1">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">주소2
+                </td>
+                <td>
+                    <input type="text" name="address_2" id="address_2">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <img src="./images/images/ic_arrow_b.gif" alt="">전화
+                </td>
+                <td>
+                    <input type="text" name="phone_Num" id="phone_Num">
+                </td>
+            </tr>
+        </table>
+        <table id="table2" style="border-top: 0px;">
+            <tr style="border-top: 0px;">
+                <th colspan="5" style="border-top: 0px;">관심분야</th>
+            </tr>
+            <tr style="border-style: none;">
+                <td style="background-color: white;">
+                    <label><input type="checkbox" name="interest_field" value="Visual Basic">Visual Basic</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="C">C</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Java">Java</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="ASP">ASP</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="PHP">PHP</label>
+                </td>
+            </tr>
+            <tr style="border-style: none;">
+                <td style="background-color: white;">
+                    <label><input type="checkbox" name="interest_field" value="XML">XML</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Javascript">Javascript</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="HTML">HTML</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Dreamweaver">Dreamweaver</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="정보처리기사">정보처리기사</label>
+                </td>
+            </tr>
+            <tr style="border-style: none;">
+                <td style="background-color: white;">
+                    <label><input type="checkbox" name="interest_field" value="Linux">Linux</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Unix">Unix</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Windows2000">Windows2000</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="Oracle">Oracle</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="MS-SQL">MS-SQL</label>
+                </td>
+            </tr>
+            <tr style="border-style: none;">
+                <td style="background-color: white;">
+                    <label><input type="checkbox" name="interest_field" value="MySQLc">MySQLc</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="DB모델링">DB모델링</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="MCP">MCP</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="OCP">OCP</label>
+                </td>
+                <td>
+                    <label><input type="checkbox" name="interest_field" value="SCJP">SCJP</label>
+                </td>
+            </tr>
+
+
+
+
+        </table>
+        <div id="confirm_div" align="center">
+            <input type="submit" value="확인">
+            <input type="reset" value="다시쓰기">
+        </div>
+    </form>
+</body>
+
+</html>

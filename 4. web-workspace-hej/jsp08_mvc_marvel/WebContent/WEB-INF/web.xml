@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>jsp08_mvc_marvel</display-name>
+  <!-- /marvel_list -->
+  <servlet>
+  	<servlet-name>marvelController</servlet-name>
+  	<servlet-class>jsp08_mvc_marvel.controller.MarvelController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>marvelController</servlet-name>
+  	<url-pattern>/marvel_list</url-pattern>
+  </servlet-mapping>
+  
+  <!-- /marvel_write -->
+  <servlet>
+  	<servlet-name>marvelWriteController</servlet-name>
+  	<servlet-class>jsp08_mvc_marvel.controller.MarvelWriteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>marvelWriteController</servlet-name>
+  	<url-pattern>/marvel_write</url-pattern>
+  </servlet-mapping>
+  
+  <!-- /marvel_update -->
+  <servlet>
+  	<servlet-name>marvelUpdateController</servlet-name>
+  	<servlet-class>jsp08_mvc_marvel.controller.MarvelUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>marvelUpdateController</servlet-name>
+  	<url-pattern>/marvel_update</url-pattern>
+  </servlet-mapping>
+  
+  <!-- /marvel_delete -->
+  <servlet>
+  	<servlet-name>marvelDeleteController</servlet-name>
+  	<servlet-class>jsp08_mvc_marvel.controller.MarvelDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>marvelDeleteController</servlet-name>
+  	<url-pattern>/marvel_delete</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>

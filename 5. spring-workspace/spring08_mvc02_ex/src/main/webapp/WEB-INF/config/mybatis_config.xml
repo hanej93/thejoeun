@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<!-- 카멜표기 인식 설정 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 키값 자동 설정 -->
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<!-- 별칭 설정  -->
+		<typeAlias type="com.myapp.marvel.Marvel" alias="Marvel"/>
+	</typeAliases>
+</configuration>
+  

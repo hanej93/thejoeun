@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--  카멜표기! -->
+<!--  유즈제네레이터키 -->
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	
+	<!--  클래스명이 항상 패키지명도 써줘야되는데 너무기니까 짧게 쓰기위한 설정 -->
+	<typeAliases>
+		<typeAlias type="emp.Employee" alias="Employee"/>
+	</typeAliases>
+	
+</configuration>
+
+
+
+
+

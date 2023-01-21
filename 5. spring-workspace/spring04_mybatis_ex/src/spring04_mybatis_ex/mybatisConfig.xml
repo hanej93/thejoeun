@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- DB의 언더바표기법을 카멜표기법으로 자동으로 바꿔주는 세팅 -->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	
+	<!-- 위 경로를 포함한 클래스를 간단하게 User로 별칭 -->
+	<typeAliases>
+		<typeAlias type="spring04_mybatis_ex.User" alias="User"/>
+	</typeAliases>
+</configuration>  

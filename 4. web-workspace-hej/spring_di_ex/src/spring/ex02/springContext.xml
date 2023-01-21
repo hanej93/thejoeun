@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="missileAttack" class="spring.ex02.MissileAttack"/>
+	<bean id="punchAttack" class="spring.ex02.PunchAttack"/>
+	
+	<bean id="taekwonV" class="spring.ex02.TaekwonV">
+		<constructor-arg value="태권브이"></constructor-arg>
+		<constructor-arg ref="missileAttack"></constructor-arg>
+	</bean>
+	<bean id="transformer" class="spring.ex02.Transformer">
+		<property name="name" value="트랜스포머"></property>
+		<property name="attack" ref="punchAttack"></property>
+	</bean>
+	
+</beans>

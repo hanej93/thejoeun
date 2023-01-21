@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userSession">
+	<select id="selectUserList" resultType="User">
+		select * from User
+	</select>
+	
+	<select id="selectUserById" resultType="User">
+		select * from User
+		where id = #{id}
+	</select>
+	
+	<insert id="insertUser" parameterType="User">
+		insert into user values(
+		#{id}, #{userId}, #{password}, #{birthDate}, #{phone}, #{address}, #{joinedDate}
+		)
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+		update user set 
+		user_id = #{userId},
+		password = #{password},
+		birth_date = #{birthDate},
+		phone = #{phone},
+		address = #{address},
+		joined_date = #{joinedDate}
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from user where id = #{id}
+	</delete>
+	
+	<select id="selectByUserIdSearchingKeword" resultType="User">
+		select * from user
+		where user_id like concat('%', #{keyword}, '%')
+	</select>
+
+</mapper>

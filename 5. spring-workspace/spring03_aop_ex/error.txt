@@ -1,0 +1,2 @@
+java.lang.ArithmeticExceptionError: 23시 53분 36초 : 893
+java.lang.ArithmeticExceptionError: 23시 54분 41초 : 244

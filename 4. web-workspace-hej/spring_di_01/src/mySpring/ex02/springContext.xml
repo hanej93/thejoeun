@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 리스트 관련 아이를 추가하는 방법 -->
+	<bean id="foods" class="mySpring.ex02.FavoriteFoods">
+		<constructor-arg>
+			<list>
+				<value>자장면</value>
+				<value>짬뽕</value>
+				<value>볶음밥</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="user" class="mySpring.ex02.User">
+		<property name="name" value="gaga"/>
+		<property name="age" value="20"/>
+		<property name="favoriteFoods" ref="foods"/>
+	</bean>
+
+</beans>

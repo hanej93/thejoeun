@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatisConfig.xml -->
+<configuration>
+	<settings>
+		<!-- 언더바로 표현되어있는 디비 컴럼을 카멜표현으로 변환시켜주는 아이 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!-- 마이바티스에서 자바객체 알리야스 설정 -->
+	<typeAliases>
+		<typeAlias type="spring04_mybatis.Person" alias="Person"/>
+	</typeAliases>
+	
+</configuration>

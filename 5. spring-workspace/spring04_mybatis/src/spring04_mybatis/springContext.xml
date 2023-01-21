@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- springContext.xml -->
+	
+	<!-- spring jdbc로 db접속 정보를 넣어 빈으로 생성 -->
+	
+	<!-- DMDS를 입력후 컨트롤 + 스페이스 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 접속정보를 넣어준다 -->
+		<!-- 클래스이름 -->
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<!-- url -->
+		<property name="url" value="jdbc:mysql://Localhost:3306/tj_b?serverTimezone=Asia/Seoul&amp;characterEncoding=utf-8"/>
+		<!-- user -->
+		<property name="username" value="root"/>
+		<!-- password -->
+		<property name="password" value="mysql"/>
+	</bean>
+	
+	<!-- mybatis에 datasource를 넣어 빈으로 만든다 -->
+	<!--  SSFB를 입력 후 컨트롤 스페이스 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- database 접속 dataSource 셋팅 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 마이바티스 설정파일 셋팅 -->
+		<property name="configLocation" value="classpath:spring04_mybatis/mybatisConfig.xml"/>
+		<!-- 마이바티스 매퍼파일 셋팅 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:spring04_mybatis/personMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- sqlSessionTemplate -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+
+</beans>

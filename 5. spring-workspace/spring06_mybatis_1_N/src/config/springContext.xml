@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- 빈 스캔  -->
+	<context:component-scan base-package="service"/>
+	
+	<!-- DB정보가 있는 properties 파일을 추가 -->
+	<context:property-placeholder location="classpath:config/mysql_value.properties"/>
+	
+	<!-- spring jdbc로 접속 -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${mysql.driverClass}"/>
+		<property name="url" value="${mysql.url}"/>
+		<property name="username" value="${mysql.username}"/>
+		<property name="password" value="${mysql.password}"/>
+	</bean>
+	
+	<!-- mybatis도 추가 -->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:config/mybatisConfig.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/customerMapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 매퍼를 스캔함 -->
+	<mybatis-spring:scan base-package="mapper"/>
+
+	<!-- 트랜젝션을 추가하기 위한 셋팅 DSTM 컨트롤+스페이스바 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			익셉션이 발생하면 "롤백"시키겠다는 의미
+			<tx:method name="deleteCustomerAndOrders" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(public int deleteCustomerAndOrders(..))" id="myPt"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPt"/>
+	</aop:config> -->
+	
+	<!-- annotation으로 트랜잭션을 추가하는 방법 -->
+	<tx:annotation-driven/>
+	
+</beans>

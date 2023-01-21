@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>jsp08_mvc</display-name>
+	<!-- 서블릿을 등록 -->
+	<servlet>
+		<!-- 3. 아무 이름이어도 상관없음(변수이름만드는 것과 비슷)-->
+		<servlet-name>messageController</servlet-name>
+		<!-- 4. 서블릿이 구현된 클래스  -->
+		<servlet-class>jsp08_mvc.guestbook.controller.MessageController</servlet-class>
+	</servlet>
+	
+	<!-- 서블릿 맵핑  -->
+	<servlet-mapping>
+		<!-- 2. 위에 서블릿에 등록한 네임과 동일해야 함-->
+		<servlet-name>messageController</servlet-name>
+		<!-- 1. 요청받을 주소 -->
+		<url-pattern>/list</url-pattern>
+	</servlet-mapping>
+	
+	<!-- write 서블릿을 등록 -->
+	<servlet>
+		<servlet-name>messageWriteController</servlet-name>
+		<servlet-class>jsp08_mvc.guestbook.controller.MessageWriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>messageWriteController</servlet-name>
+		<url-pattern>/write</url-pattern>
+	</servlet-mapping>
+	
+	<!-- update 서블릿을 등록 -->
+	<servlet>
+		<servlet-name>messageUpdateController</servlet-name>
+		<servlet-class>jsp08_mvc.guestbook.controller.MessageUpdateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>messageUpdateController</servlet-name>
+		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+	
+	<!-- delete 서블릿을 등록 -->
+	<servlet>
+		<servlet-name>messageDeleteController</servlet-name>
+		<servlet-class>jsp08_mvc.guestbook.controller.MessageDeleteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>messageDeleteController</servlet-name>
+		<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

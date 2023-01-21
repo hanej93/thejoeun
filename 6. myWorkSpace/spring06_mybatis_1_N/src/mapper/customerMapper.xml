@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 단독으로 xml 맵퍼를 쓸때는 이름이 상관없었지만
+	 .java 맵퍼와 연동을 할때는 "패키지명.클래스명" 으로 써줌
+ -->
+<mapper namespace="mapper.CustomerWithOrders">
+	<resultMap type="Customer" id="cwo">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<collection property="orderList" column="id" select="selectOrderById"/>	
+	</resultMap>
+	<select id="selectCustomerWithOrders" resultMap="cwo">
+		select id, name from customer where id = #{id}
+	</select>
+	
+	<select id="selectOrderById" resultType="Order">
+		select id, customer_id, name, order_datetime from orders
+		where customer_id = #{id}
+	</select>
+	
+	<insert id="insertOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+		insert into orders(id, customer_id, name, order_datetime)
+		values(#{id}, #{customerId}, #{name}, #{orderDatetime})
+	</insert>
+	
+	<delete id="deleteCustomer">
+		delete from customer where id = #{id}
+	</delete>
+	
+	<delete id="deleteOrdersWithCustomerId">
+		delete from orders where customer_id = #{id}
+	</delete>
+	
+	
+</mapper>

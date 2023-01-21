@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록 작성</title>
+    <style>
+        form{
+            position: relative;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 500px;
+            border: 1px solid black;
+            padding: 15px;
+        }
+        form>*:nth-child(1){
+            margin: 15px 50% 0 0;
+            flex:1 1 70%;
+        }
+        form>*:nth-child(2){
+            margin: 15px 0;
+            flex:1 1 70%;
+        }
+        form>*:nth-child(3){
+            margin: 15px 30%;
+            flex:1 1 70%;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        - 방명록 작성이라는 글자가 h1으로 되어있으며, 화면 가운데 정렬
+        - 방명록을 작성할 수 있는 블록이 가로로 가운데 정렬
+     -->
+    <h1>방명록 작성</h1>
+   
+    <form action="">
+        <input type="text" placeholder="이름을 입력해주세요" required>
+        <textarea name="" id="" cols="30" rows="10" placeholder="내용을 입력해주세요" required></textarea>
+        <input type="submit" value="방명록 남기기">
+    </form>
+ 
+</body>
+</html>

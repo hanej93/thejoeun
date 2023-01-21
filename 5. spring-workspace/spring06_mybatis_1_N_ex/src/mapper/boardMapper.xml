@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 단독으로 xml 맵퍼를 쓸때는 이름이 상관없었지만 .java 맵퍼와 연동을 할때는 "패키지명.클래스명" 으로 써줌 -->
+<mapper namespace="mapper.BoardWithComment">
+
+
+	<!-- ID로 검색하여 board와 해당 Comment를 조회  -->
+	<resultMap type="Board" id="bwc">
+		<id property="id" column="id" />
+		<result property="content" column="content" />
+		<result property="writeDate" column="write_date" />
+		<collection property="commentList" column="id"
+			select="selectCommentById" />
+	</resultMap>
+
+	<select id="selectBoardWithComment" resultMap="bwc">
+		select id,
+		content, write_date from board where id = #{id}
+	</select>
+	<select id="selectCommentById" resultType="Comment">
+		select id, board_id
+		,comment_content, write_date from comment where board_id = #{id}
+	</select>
+	
+	<!-- ID로 해당 board를 지우며, 해당 Comment도 전부 지워줌 -->
+	
+	<delete id="deleteBoardbyId">
+		delete from board where id = #{id}
+	</delete>
+	<delete id="deleteCommentbyBoardId">
+		delete from board where board_id = #{id{
+	</delete>
+	
+	<!-- insert -->
+	<insert id="insertBoard" parameterType="Board">
+		insert into board values(#{id}, #{comment}, #{writeDate})
+	</insert>
+	<insert id="insertComment">
+		insert into board values(#{id}, #{board_id}, #{comment_content}, #{write_date})
+	</insert>
+	
+	<!-- update -->
+	<update id="updateBoard" parameterType="Board">
+		update board set 
+		comment = #{comment}
+		where id = #{id}
+	</update>
+	<update id="updateComment">
+		update comment set
+		comment_content = {comment_content}
+		where id = #{id}
+	</update>
+	
+
+</mapper>

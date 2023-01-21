@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!--  데이터베이스 연동을 하기위한 접속정보를 가져옴-->
+	<context:property-placeholder location="/config/mysql_db.properties"/>
+	
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driverClass}"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+	</bean>
+	
+	
+	<!-- 마이바티스 설정 
+			- 가져온 데이터베이스 접속정보를 전달해줌
+			- 마이바티스 설정경로를 지정해줌
+	-->
+	
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="/config/mybatis_config.xml"/>
+	</bean>
+	
+	<!-- 맵퍼 스캔 -> 마이바티스의 기능 -->
+	<mybatis-spring:scan base-package="emp"/>
+	
+	
+	<!-- 주기적으로 실행할 job을 등록하자 JDFB 컨트롤스페이스-->
+	<bean id="myJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- 주기적으로 실행할 클래스를 속성으로 넣어줌(우리가 만든 잡!) -->
+		<property name="jobClass" value="batchPro.batchPro.MyJob"/>
+	</bean>
+	
+	<!-- 얼마 간격으로 할지 패턴을 적용함 CTFB 컨트롤 스페이스 -->
+	<bean id="myJobTF" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="myJob"/>
+		
+		<!-- 반복 주기 설정 -->
+		<!-- 매 10초마다 실행되는 코드 -->
+		<property name="cronExpression" value="0/10 * * * * ?"/>		
+	</bean>
+	
+	<!-- 스케줄러를 실행시켜주는 아이를 빈으로 등록 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers" ref="myJobTF"/>
+	</bean>
+	
+	 <context:annotation-config></context:annotation-config>
+	
+</beans>

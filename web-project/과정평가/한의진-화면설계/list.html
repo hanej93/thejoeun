@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방명록 리스트</title>
+    <style>
+        .container{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    
+        table,td{
+            border: 1px solid #990000;
+        }
+    
+        table{
+            margin: 15px auto;
+            border: 1px solid #ff0000;
+            border-collapse: collapse;
+            width: 500px;
+        }
+        tr{
+            border: 1px solid #ddd;
+        }
+        tr>td:first-child{
+            color: white;
+            background-color: #ff0000;
+            text-align: center;
+            font-weight: bold;
+            width : 30%
+    
+        }
+        tr>td:last-child{
+            text-align: left;
+            padding: 8px 16px;
+        }
+        tr:last-of-type>td{
+            text-align: center;
+            width:100%;
+        }
+        td>a{
+            text-decoration: none;
+            color:white
+        }
+        .pagination{
+            display: flex;
+            justify-content: center;
+        }
+        .pagination a {
+            color: white;
+            background-color: #ff0000;
+            float: left;
+            padding: 8px 16px;
+            transition: background-color .3s;
+            margin: 0 4px;
+            text-decoration: none;
+        }
+    
+    </style>
+</head>
+
+
+
+<body>
+    <!-- 
+        - 각각의 방명록은 테두리가 있는 블록안에 있다.
+        - 각 방명록은 한 페이지당 4개씩 보이도록 한다.
+        - 방명록리스트 하단에는 "이전 1 2 3 4 5 다음" 형태의 페이지네이션이 있어야 한다.
+        - 각 방명록은 작성자, 작성일, 내용을 표시한다.
+        - 각 방명록은 수정버튼이 하단에 있다.
+        - 각 방명록은 삭제버튼이 수정버튼 옆에 있다.
+
+     -->
+    <div class="container">
+            <table>
+                <tr>
+                    <td>작성자</td><td>아이언맨</td>
+                </tr>
+                <tr>
+                    <td>작성일</td><td>1999-09-09</td>
+                </tr>
+                <tr>
+                    <td>내용</td><td>레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저레이저</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="">수정</a> <a href="">삭제</a></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td>작성자</td><td>캡틴 아메리카</td>
+                </tr>
+                <tr>
+                    <td>작성일</td><td>1966-06-06</td>
+                </tr>
+                <tr>
+                    <td>내용</td><td>방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패방패</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="">수정</a> <a href="">삭제</a></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td>작성자</td><td>토르</td>
+                </tr>
+                <tr>
+                    <td>작성일</td><td>1222-02-02</td>
+                </tr>
+                <tr>
+                    <td>내용</td><td>망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치망치</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="">수정</a> <a href="">삭제</a></td>
+                </tr>
+
+
+            </table>
+
+            <table>
+                <tr>
+                    <td>작성자</td><td>헐크</td>
+                </tr>
+                <tr>
+                    <td>작성일</td><td>1988-08-08</td>
+                </tr>
+                <tr>
+                    <td>내용</td><td>헐크헐크헐크헐크헐크헐크헐크헐크헐크헐크헐크헐크헐크헐크</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><a href="">수정</a> <a href="">삭제</a></td>
+                </tr>
+            </table>
+        
+        <div class="pagination">
+            <a href="">이전</a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">4</a>
+            <a href="">5</a>
+            <a href="">다음</a>
+        </div>
+    </div>
+</body>
+</html>
